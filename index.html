@@ -4,94 +4,112 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Conjunto Arquitectura | Apps para Revit</title>
+
   <style>
     :root{
       --bg:#0b0f14;
       --card:#121a24;
-      --border:#203044;
-      --border2:#2a415b;
-      --txt:#eaf0ff;
+      --card2:rgba(10,14,20,.35);
+      --border:rgba(42,65,91,.55);
       --muted:#9fb6d6;
-      --muted2:#cfe1ff;
-      --blue:#2b7cff;
-      --blue2:#1b5fff;
-      --chip:#1b2635;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --txt:#eaf0ff;
+      --accent:#2b7cff;
+      --accent2:rgba(43,124,255,.55);
     }
-    *{box-sizing:border-box}
+
     body{
+      font-family:system-ui,Segoe UI,Roboto,Arial;
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:
-        radial-gradient(900px 500px at 15% 10%, rgba(43,124,255,.18), transparent 55%),
-        radial-gradient(700px 450px at 90% 20%, rgba(59,255,203,.10), transparent 55%),
-        radial-gradient(700px 600px at 55% 95%, rgba(143,80,255,.10), transparent 55%),
-        var(--bg);
+      background:var(--bg);
       color:var(--txt);
     }
-    .wrap{max-width:1080px;margin:auto;padding:34px}
+    .wrap{max-width:980px;margin:auto;padding:34px}
     .card{
-      background:linear-gradient(180deg, rgba(18,26,36,.92), rgba(18,26,36,.88));
+      background:var(--card);
       border:1px solid var(--border);
-      border-radius:20px;
+      border-radius:18px;
       padding:26px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
     }
+    h1{margin:0 0 8px;font-size:44px;letter-spacing:.2px}
+    h3{margin:0 0 10px}
+    p{line-height:1.55;color:#cfe1ff;margin:8px 0}
+    ul{margin:10px 0 0 18px;color:#cfe1ff}
+    li{margin:6px 0}
+
     .badge{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:6px 12px;border-radius:999px;
-      background:var(--chip);
-      border:1px solid var(--border2);
-      font-size:12px;
-      color:var(--muted2);
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      background:#1b2635;border:1px solid #2a415b;font-size:12px;
     }
-    h1{margin:10px 0 8px;font-size:38px;letter-spacing:.2px}
-    p{line-height:1.6;color:var(--muted2);margin:8px 0}
-    a{color:#bfe0ff}
-    .grid{display:grid;gap:18px;grid-template-columns:1.15fr .85fr;margin-top:18px}
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+
+    .grid{
+      display:grid;gap:16px;
+      grid-template-columns:1.2fr .8fr;
+      margin-top:18px;
+      align-items:start;
+    }
 
     .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
     a.btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 18px;border-radius:14px;text-decoration:none;font-weight:800;
-      transition:transform .08s ease, filter .15s ease, background .15s ease;
+      display:inline-block;padding:12px 18px;border-radius:14px;
+      text-decoration:none;font-weight:800;
+      transition:filter .15s ease, transform .10s ease;
       user-select:none;
     }
-    a.btn:active{transform:scale(.98)}
-    .buy{
-      background:linear-gradient(180deg, var(--blue), var(--blue2));
-      color:#06101f;
-      box-shadow:0 10px 25px rgba(43,124,255,.20);
-    }
-    .dl{
-      background:rgba(28,42,58,.6);
-      color:var(--txt);
-      border:1px solid var(--border2);
-    }
-    .buy:hover,.dl:hover{filter:brightness(1.06)}
-    ul{margin:10px 0 0 18px;color:var(--muted2)}
-    li{margin:6px 0}
+    a.btn:hover{filter:brightness(1.08)}
+    a.btn:active{transform:scale(.99)}
+    .buy{background:var(--accent);color:#08121f}
+    .dl{background:#1c2a3a;color:var(--txt);border:1px solid #2a415b}
 
     .muted{font-size:13px;color:var(--muted)}
     .footer{margin-top:18px;color:var(--muted);font-size:13px}
 
-    /* Descargas */
-    .section-title{margin:22px 0 8px;font-size:22px}
+    /* Sección títulos */
+    .section-title{margin:26px 0 8px;font-size:24px}
+
+    /* DESCARGAS */
     .downloads{margin-top:14px;display:grid;gap:12px}
+
     .dlCard{
-      background:rgba(10,14,20,.35);
-      border:1px solid rgba(42,65,91,.55);
+      background:var(--card2);
+      border:1px solid var(--border);
       border-radius:16px;
       padding:16px;
       display:flex;
       justify-content:space-between;
       gap:14px;
       align-items:center;
+
+      /* clickable + animaciones */
+      position:relative;
+      cursor:pointer;
+      transition: transform .10s ease, filter .15s ease, border-color .15s ease, background .15s ease;
     }
+    .dlCard:hover{
+      filter:brightness(1.08);
+      border-color: var(--accent2);
+      background: rgba(28,42,58,.55);
+    }
+    .dlCard:active{ transform: scale(.995); }
+
+    /* Link invisible que cubre toda la tarjeta */
+    .dlCard .dlLink{
+      position:absolute;
+      inset:0;
+      border-radius:16px;
+      z-index:1;
+      display:block;
+    }
+
+    /* texto y botón encima del link invisible */
+    .dlCard .dlLeft, .dlCard .dlBtn{
+      position:relative;
+      z-index:2;
+    }
+
     .dlLeft b{display:block;font-size:18px;margin-bottom:2px}
     .dlLeft small{color:var(--muted);display:block}
+
     .dlBtn{
       padding:10px 14px;border-radius:999px;
       border:1px solid rgba(42,65,91,.8);
@@ -101,53 +119,43 @@
       font-weight:800;
       min-width:120px;
       text-align:center;
+      transition:filter .15s ease;
     }
     .dlBtn:hover{filter:brightness(1.08)}
 
-    /* Galería */
+    /* GALERÍA */
     .galleryWrap{margin-top:18px}
     .viewer{
       position:relative;
       border-radius:18px;
-      border:1px solid rgba(42,65,91,.55);
-      background:rgba(10,14,20,.35);
+      border:1px solid var(--border);
+      background:var(--card2);
       padding:14px;
       overflow:hidden;
     }
-    .viewerTop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
-    .viewerTop h3{margin:0;font-size:18px}
-    .viewerTop .cap{color:var(--muted);font-size:13px;margin:0}
-    .stage{
-      display:grid;
-      place-items:center;
-      min-height:360px;
-      border-radius:14px;
-      background:rgba(0,0,0,.18);
-      overflow:hidden;
+    .viewerTitle{
+      margin:0 0 10px;
+      font-size:15px;
+      color:#cfe1ff;
     }
-    .stage img{
+    .viewerMain{
       width:100%;
-      height:auto;
-      max-height:520px;
-      object-fit:contain;
+      height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      overflow:hidden;
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(42,65,91,.35);
+    }
+    .viewerMain img{
+      width:100%;
+      height:100%;
+      object-fit:contain; /* estilo "tienda": no recorta */
       display:block;
     }
-    .navBtn{
-      position:absolute;
-      top:55%;
-      transform:translateY(-50%);
-      width:44px;height:44px;
-      border-radius:999px;
-      border:1px solid rgba(42,65,91,.85);
-      background:rgba(18,26,36,.75);
-      color:var(--txt);
-      display:grid;place-items:center;
-      cursor:pointer;
-      user-select:none;
-    }
-    .navBtn:hover{filter:brightness(1.12)}
-    .navPrev{left:14px}
-    .navNext{right:14px}
+
     .thumbs{
       margin-top:12px;
       display:flex;
@@ -156,26 +164,35 @@
       padding-bottom:6px;
     }
     .thumb{
-      border:1px solid rgba(42,65,91,.55);
-      background:rgba(28,42,58,.55);
-      border-radius:12px;
-      padding:6px;
-      cursor:pointer;
       flex:0 0 auto;
-      width:96px;
+      width:92px;
+      height:64px;
+      border-radius:12px;
+      border:1px solid rgba(42,65,91,.55);
+      background:rgba(0,0,0,.15);
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .12s ease, filter .15s ease, border-color .15s ease;
     }
+    .thumb:hover{filter:brightness(1.07)}
+    .thumb:active{transform:scale(.98)}
     .thumb img{
       width:100%;
-      height:60px;
+      height:100%;
       object-fit:cover;
-      border-radius:8px;
       display:block;
     }
     .thumb.active{
-      outline:2px solid rgba(43,124,255,.95);
-      border-color:rgba(43,124,255,.55);
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 2px rgba(43,124,255,.15) inset;
     }
-    .hint{margin-top:8px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:36px}
+      .viewerMain{height:320px}
+    }
   </style>
 </head>
 
@@ -183,7 +200,6 @@
   <div class="wrap">
     <div class="card">
       <span class="badge">Revit 2023/2024/2025/2026 • Windows</span>
-
       <h1>Conjunto Arquitectura</h1>
       <p>Apps para Revit: descargas, soporte y mejoras continuas. (Sí, aquí es donde los clics innecesarios vienen a morir 😄)</p>
 
@@ -197,32 +213,25 @@
           </ul>
 
           <div class="btns">
-            <!-- BOTÓN COMPRAR (WhatsApp) -->
             <a class="btn buy"
                href="https://wa.me/51966848416?text=Hola%20Conjunto%20Arquitectura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)"
                target="_blank" rel="noopener">Comprar</a>
 
-            <!-- BOTÓN DESCARGAR (baja a la sección) -->
             <a class="btn dl" href="#descargas">Descargar</a>
           </div>
 
           <p class="muted">
-            Soporte: <a href="https://wa.me/51966848416" target="_blank" rel="noopener">WhatsApp +51 966 848 416</a>
-            • Correo: <a href="mailto:conjuntoarquitec@gmail.com">conjuntoarquitec@gmail.com</a><br>
-            Instalación: Descarga el RAR → extrae → ejecuta instalador o copia a Addins (según paquete).<br>
-            Si Windows lo bloquea: clic derecho → <b>Propiedades</b> → <b>Desbloquear</b> → Aceptar.
+            Soporte: WhatsApp <b>+51 966848416</b> • Correo: <a href="mailto:conjuntoarquitec@gmail.com" style="color:#cfe1ff">conjuntoarquitec@gmail.com</a><br/>
+            Instalación: Descarga el <b>RAR</b> → extrae → ejecuta instalador o copia a Addins (según paquete).<br/>
+            Si Windows lo bloquea: clic derecho → <b>Propiedades → Desbloquear → Aceptar</b>.
           </p>
         </div>
 
         <div>
           <h3>Demo / Capturas</h3>
-          <p class="muted">Puedes poner links a YouTube o imágenes.</p>
-          <div class="card" style="padding:14px;border-radius:14px">
-            <p style="margin:0" class="muted">🎥 Demo:
-              <a href="https://www.youtube.com/@conjuntoarquitectura7219" target="_blank" rel="noopener">
-                https://www.youtube.com/@conjuntoarquitectura7219
-              </a>
-            </p>
+          <p class="muted">links a YouTube.</p>
+          <div class="card" style="padding:14px;border-radius:14px;background:rgba(10,14,20,.35)">
+            <p style="margin:0" class="muted">🎥 Demo: <a href="https://www.youtube.com/@conjuntoarquitectura7219" target="_blank" rel="noopener" style="color:#cfe1ff">https://www.youtube.com/@conjuntoarquitectura7219</a></p>
             <p style="margin:8px 0 0" class="muted">🧾 Guía: agrega un PDF o README con pasos</p>
           </div>
         </div>
@@ -234,6 +243,7 @@
 
       <div class="downloads">
         <div class="dlCard">
+          <a class="dlLink" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2023_v3.0.0.rar" target="_blank" rel="noopener"></a>
           <div class="dlLeft">
             <b>Revit 2023</b>
             <small>Setup_SyncM_2023_v3.0.0.rar</small>
@@ -242,6 +252,7 @@
         </div>
 
         <div class="dlCard">
+          <a class="dlLink" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2024_v3.0.0.rar" target="_blank" rel="noopener"></a>
           <div class="dlLeft">
             <b>Revit 2024</b>
             <small>Setup_SyncM_2024_v3.0.0.rar</small>
@@ -250,6 +261,7 @@
         </div>
 
         <div class="dlCard">
+          <a class="dlLink" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2025_v3.0.0.rar" target="_blank" rel="noopener"></a>
           <div class="dlLeft">
             <b>Revit 2025</b>
             <small>Setup_SyncM_2025_v3.0.0.rar</small>
@@ -258,6 +270,7 @@
         </div>
 
         <div class="dlCard">
+          <a class="dlLink" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2026_v3.0.0.rar" target="_blank" rel="noopener"></a>
           <div class="dlLeft">
             <b>Revit 2026</b>
             <small>Setup_SyncM_2026_v3.0.0.rar</small>
@@ -266,12 +279,12 @@
         </div>
       </div>
 
-      <!-- LISTA COMPLETA (los “guiones” que pediste) -->
+      <!-- FUNCIONES INCLUIDAS -->
       <h2 class="section-title">Funciones incluidas</h2>
       <ul>
         <li>Metrados Automáticos por Código de Montaje</li>
         <li>Cuadro de Acabados</li>
-        <li>Exportar a Excel con ítems y listado de Resumen</li>
+        <li>Exportar a excel con items y listado de Resumen</li>
         <li>Renombrar Ejes a los elementos 3D</li>
         <li>Sistema CamelCase - Vistas y Renombrado de Planos</li>
         <li>Limpieza de filtros y plantillas</li>
@@ -284,25 +297,31 @@
         <li>Creación de Detalles de puertas, Ventanas y Estructuras (LEYENDAS)</li>
       </ul>
 
-      <!-- GALERÍA -->
+      <!-- GALERÍA FINAL (tus fotos en assets/img/) -->
       <div class="galleryWrap">
         <h2 class="section-title">Capturas de pantalla y vídeos</h2>
+        <p class="muted">Haz clic en una miniatura para verla ampliada.</p>
 
         <div class="viewer">
-          <div class="viewerTop">
-            <h3 id="viewerTitle">Vista previa</h3>
-            <p class="cap" id="viewerCount"></p>
+          <p class="viewerTitle">Vista previa</p>
+          <div class="viewerMain">
+            <img id="mainImg" src="assets/img/APP.JPG" alt="Captura" />
           </div>
 
-          <button class="navBtn navPrev" id="btnPrev" aria-label="Anterior">‹</button>
-          <button class="navBtn navNext" id="btnNext" aria-label="Siguiente">›</button>
-
-          <div class="stage">
-            <img id="viewerImg" alt="Captura" />
+          <div class="thumbs" id="thumbs">
+            <!-- miniaturas (usa tus nombres reales) -->
+            <div class="thumb active" data-src="assets/img/APP.JPG"><img src="assets/img/APP.JPG" alt="APP"></div>
+            <div class="thumb" data-src="assets/img/Metrados.JPG"><img src="assets/img/Metrados.JPG" alt="Metrados"></div>
+            <div class="thumb" data-src="assets/img/ExcelExportar.JPG"><img src="assets/img/ExcelExportar.JPG" alt="Excel"></div>
+            <div class="thumb" data-src="assets/img/Acabados.gif"><img src="assets/img/Acabados.gif" alt="Acabados"></div>
+            <div class="thumb" data-src="assets/img/Encofrados.JPG"><img src="assets/img/Encofrados.JPG" alt="Encofrados"></div>
+            <div class="thumb" data-src="assets/img/Ejes.JPG"><img src="assets/img/Ejes.JPG" alt="Ejes"></div>
+            <div class="thumb" data-src="assets/img/CamelCase.JPG"><img src="assets/img/CamelCase.JPG" alt="CamelCase"></div>
+            <div class="thumb" data-src="assets/img/AcotadoMapeo.JPG"><img src="assets/img/AcotadoMapeo.JPG" alt="Mapeo"></div>
+            <div class="thumb" data-src="assets/img/Acotado%20Automático.JPG"><img src="assets/img/Acotado%20Automático.JPG" alt="Acotado"></div>
+            <div class="thumb" data-src="assets/img/hq720.jpg"><img src="assets/img/hq720.jpg" alt="Video"></div>
+            <div class="thumb" data-src="assets/img/red-brick-wall-with-layers-of-plaster-vector.jpg"><img src="assets/img/red-brick-wall-with-layers-of-plaster-vector.jpg" alt="Brick"></div>
           </div>
-
-          <div class="thumbs" id="thumbs"></div>
-          <div class="hint">Tip: clic en una miniatura para ampliar. Flechas para navegar.</div>
         </div>
       </div>
 
@@ -313,71 +332,28 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // ✅ IMPORTANTE:
-    // Estos nombres deben existir dentro de: assets/img/
-    // Si alguno tiene espacios/tildes, igual funciona (encodeURI).
-    const images = [
-      { src: "assets/img/APP.JPG", title: "Panel / App" },
-      { src: "assets/img/Metrados.JPG", title: "Metrados Automáticos" },
-      { src: "assets/img/Acabados.gif", title: "Cuadro de Acabados" },
-      { src: "assets/img/ExcelExportar.JPG", title: "Exportar a Excel" },
-      { src: "assets/img/Ejes.JPG", title: "Renombrar Ejes" },
-      { src: "assets/img/CamelCase.JPG", title: "Sistema CamelCase" },
-      { src: "assets/img/Encofrados.JPG", title: "Encofrados" },
-      { src: "assets/img/AcotadoMapeo.JPG", title: "Mapeo de color / análisis" },
-      { src: "assets/img/Acotado Automático.JPG", title: "Acotaciones automáticas" },
-      { src: "assets/img/hq720.jpg", title: "Demo / Video" }
-    ];
+    // Galería: click en miniatura -> cambia imagen principal
+    (function(){
+      var main = document.getElementById("mainImg");
+      var thumbs = document.getElementById("thumbs");
+      if(!main || !thumbs) return;
 
-    const viewerImg = document.getElementById("viewerImg");
-    const viewerTitle = document.getElementById("viewerTitle");
-    const viewerCount = document.getElementById("viewerCount");
-    const thumbs = document.getElementById("thumbs");
-    const btnPrev = document.getElementById("btnPrev");
-    const btnNext = document.getElementById("btnNext");
+      thumbs.addEventListener("click", function(e){
+        var t = e.target;
+        while (t && !t.classList.contains("thumb")) t = t.parentElement;
+        if(!t) return;
 
-    let idx = 0;
+        var src = t.getAttribute("data-src");
+        if(!src) return;
 
-    function setActive(i){
-      idx = (i + images.length) % images.length;
-      const item = images[idx];
+        main.src = src;
 
-      viewerImg.src = encodeURI(item.src);
-      viewerTitle.textContent = item.title || "Vista previa";
-      viewerCount.textContent = (idx + 1) + " / " + images.length;
-
-      [...thumbs.children].forEach((b, k) => b.classList.toggle("active", k === idx));
-    }
-
-    function buildThumbs(){
-      thumbs.innerHTML = "";
-      images.forEach((it, i) => {
-        const b = document.createElement("button");
-        b.className = "thumb";
-        b.type = "button";
-        b.title = it.title || ("Imagen " + (i+1));
-        b.addEventListener("click", () => setActive(i));
-
-        const im = document.createElement("img");
-        im.alt = it.title || "thumb";
-        im.src = encodeURI(it.src);
-
-        b.appendChild(im);
-        thumbs.appendChild(b);
+        // activar borde en la miniatura seleccionada
+        var all = thumbs.querySelectorAll(".thumb");
+        for(var i=0;i<all.length;i++) all[i].classList.remove("active");
+        t.classList.add("active");
       });
-    }
-
-    btnPrev.addEventListener("click", () => setActive(idx - 1));
-    btnNext.addEventListener("click", () => setActive(idx + 1));
-
-    // Teclado (opcional, pero elegante)
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") setActive(idx - 1);
-      if (e.key === "ArrowRight") setActive(idx + 1);
-    });
-
-    buildThumbs();
-    setActive(0);
+    })();
   </script>
 </body>
 </html>
