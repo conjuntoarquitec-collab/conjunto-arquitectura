@@ -94,27 +94,26 @@
       cursor:pointer;
       transition: transform .10s ease, filter .15s ease, border-color .15s ease, background .15s ease;
 
-    }
     .dlCard:hover{
       filter:brightness(1.08);
       border-color: rgba(43,124,255,.55);
       background: rgba(28,42,58,.55);
     }
-    .dlCard:active{
-      transform: scale(.995);
-    }
+    .dlCard:active{ transform: scale(.995); }
+    
     .dlCard .dlLink{
       position:absolute;
       inset:0;
       border-radius:16px;
       z-index:1;
+      display:block;
     }
-    .dlCard .dlLeft, .dlCard .dlBtn{
-      position:relative;
-      z-index:2;
-    }
-
     
+    .dlCard .dlLeft,
+    .dlCard .dlBtn{
+      position:relative;
+      z-index:2; /* texto y botón por encima del link invisible */
+    }    
     .dlLeft b{display:block;font-size:18px;margin-bottom:2px}
     .dlLeft small{color:var(--muted);display:block}
     .dlBtn{
@@ -258,38 +257,74 @@
       <p class="muted">Elige tu versión de Revit (instaladores oficiales).</p>
 
       <div class="downloads">
-        <div class="dlCard">
-          <div class="dlLeft">
-            <b>Revit 2023</b>
-            <small>Setup_SyncM_2023_v3.0.0.rar</small>
-          </div>
-          <a class="dlBtn" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2023_v3.0.0.rar" target="_blank" rel="noopener">Descargar</a>
-        </div>
 
-        <div class="dlCard">
-          <div class="dlLeft">
-            <b>Revit 2024</b>
-            <small>Setup_SyncM_2024_v3.0.0.rar</small>
-          </div>
-          <a class="dlBtn" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2024_v3.0.0.rar" target="_blank" rel="noopener">Descargar</a>
-        </div>
+  <div class="dlCard">
+    <!-- link invisible: hace clickeable toda la tarjeta -->
+    <a class="dlLink"
+       href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2023_v3.0.0.rar"
+       target="_blank" rel="noopener"
+       aria-label="Descargar Revit 2023"></a>
 
-        <div class="dlCard">
-          <div class="dlLeft">
-            <b>Revit 2025</b>
-            <small>Setup_SyncM_2025_v3.0.0.rar</small>
-          </div>
-          <a class="dlBtn" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2025_v3.0.0.rar" target="_blank" rel="noopener">Descargar</a>
-        </div>
+    <div class="dlLeft">
+      <b>Revit 2023</b>
+      <small>Setup_SyncM_2023_v3.0.0.rar</small>
+    </div>
 
-        <div class="dlCard">
-          <div class="dlLeft">
-            <b>Revit 2026</b>
-            <small>Setup_SyncM_2026_v3.0.0.rar</small>
-          </div>
-          <a class="dlBtn" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2026_v3.0.0.rar" target="_blank" rel="noopener">Descargar</a>
-        </div>
+    <a class="dlBtn"
+       href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2023_v3.0.0.rar"
+       target="_blank" rel="noopener">Descargar</a>
+  </div>
+
+    <div class="dlCard">
+      <a class="dlLink"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2024_v3.0.0.rar"
+         target="_blank" rel="noopener"
+         aria-label="Descargar Revit 2024"></a>
+  
+      <div class="dlLeft">
+        <b>Revit 2024</b>
+        <small>Setup_SyncM_2024_v3.0.0.rar</small>
       </div>
+  
+      <a class="dlBtn"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2024_v3.0.0.rar"
+         target="_blank" rel="noopener">Descargar</a>
+    </div>
+  
+    <div class="dlCard">
+      <a class="dlLink"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2025_v3.0.0.rar"
+         target="_blank" rel="noopener"
+         aria-label="Descargar Revit 2025"></a>
+  
+      <div class="dlLeft">
+        <b>Revit 2025</b>
+        <small>Setup_SyncM_2025_v3.0.0.rar</small>
+      </div>
+  
+      <a class="dlBtn"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2025_v3.0.0.rar"
+         target="_blank" rel="noopener">Descargar</a>
+    </div>
+  
+    <div class="dlCard">
+      <a class="dlLink"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2026_v3.0.0.rar"
+         target="_blank" rel="noopener"
+         aria-label="Descargar Revit 2026"></a>
+  
+      <div class="dlLeft">
+        <b>Revit 2026</b>
+        <small>Setup_SyncM_2026_v3.0.0.rar</small>
+      </div>
+  
+      <a class="dlBtn"
+         href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2026_v3.0.0.rar"
+         target="_blank" rel="noopener">Descargar</a>
+    </div>
+  
+  </div>
+
 
       <!-- LISTA COMPLETA (los “guiones” que pediste) -->
       <h2 class="section-title">Funciones incluidas</h2>
