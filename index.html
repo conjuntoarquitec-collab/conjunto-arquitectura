@@ -19,6 +19,30 @@
     ul{margin:10px 0 0 18px;color:#cfe1ff}
     .muted{font-size:13px;color:#9fb6d6}
     .footer{margin-top:18px;color:#9fb6d6;font-size:13px}
+
+    /* ====== DESCARGAS BONITAS ====== */
+    .downloads{display:grid;gap:12px;margin-top:10px}
+    .file{
+      display:flex;justify-content:space-between;align-items:center;gap:14px;
+      background:#0f1620;border:1px solid #203044;border-radius:14px;
+      padding:14px;text-decoration:none;color:#eaf0ff;
+      transition:transform .08s ease, border-color .08s ease;
+    }
+    .file:hover{transform:translateY(-1px);border-color:#2b7cff}
+    .chip{
+      padding:8px 12px;border-radius:999px;
+      background:#1c2a3a;border:1px solid #2a415b;
+      font-weight:700;font-size:13px;white-space:nowrap;
+    }
+
+    /* Responsive */
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      .file{flex-direction:column;align-items:flex-start}
+      .chip{align-self:flex-start}
+    }
   </style>
 </head>
 <body>
@@ -33,22 +57,70 @@
           <h3>¿Qué incluye?</h3>
           <ul>
             <li>Herramientas para automatizar tareas repetitivas en Revit</li>
-            <li>Instaladores / DLL en ZIP por versión</li>
+            <li>Instaladores por versión (2023/2024/2025/2026)</li>
             <li>Soporte y actualizaciones</li>
           </ul>
 
           <div class="btns">
-            <!-- Cambia este link por tu link de pago (MercadoPago/PayPal/Gumroad) -->
-            <a class="btn buy" href="https://wa.me/51966848416?text=Hola%20Conjunto%20Arquitectura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)" target="_blank" rel="noopener">Comprar</a>
+            <a class="btn buy"
+               href="https://wa.me/51966848416?text=Hola%20Conjunto%20Arquitectura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)"
+               target="_blank" rel="noopener">Comprar</a>
 
-
-            <!-- Luego lo cambiaremos por el link real de tu Release -->
-            <a class="btn dl" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases" target="_blank" rel="noopener">Descargar</a>
+            <!-- Baja a la sección de descargas -->
+            <a class="btn dl" href="#descargas">Descargar</a>
           </div>
 
-          <p class="muted">
-            Soporte: WhatsApp +51 966848416 • Correo: conjuntoarquitec@gmail.com
-            Instalación: Descarga el ZIP → Ejecuta instalador o copia a Addins (según paquete).
+          <!-- SECCIÓN DESCARGAS (4 LINKS) -->
+          <h3 id="descargas" style="margin-top:22px">Descargas por versión</h3>
+          <p class="muted">Elige tu versión de Revit (instaladores oficiales).</p>
+
+          <div class="downloads">
+            <a class="file"
+               href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2023_v3.0.0.rar"
+               target="_blank" rel="noopener">
+              <div>
+                <b>Revit 2023</b>
+                <div class="muted">Setup_SyncM_2023_v3.0.0.rar</div>
+              </div>
+              <span class="chip">Descargar</span>
+            </a>
+
+            <a class="file"
+               href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2024_v3.0.0.rar"
+               target="_blank" rel="noopener">
+              <div>
+                <b>Revit 2024</b>
+                <div class="muted">Setup_SyncM_2024_v3.0.0.rar</div>
+              </div>
+              <span class="chip">Descargar</span>
+            </a>
+
+            <a class="file"
+               href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2025_v3.0.0.rar"
+               target="_blank" rel="noopener">
+              <div>
+                <b>Revit 2025</b>
+                <div class="muted">Setup_SyncM_2025_v3.0.0.rar</div>
+              </div>
+              <span class="chip">Descargar</span>
+            </a>
+
+            <a class="file"
+               href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases/download/ConuntoArquitec-v3.0.0/Setup_SyncM_2026_v3.0.0.rar"
+               target="_blank" rel="noopener">
+              <div>
+                <b>Revit 2026</b>
+                <div class="muted">Setup_SyncM_2026_v3.0.0.rar</div>
+              </div>
+              <span class="chip">Descargar</span>
+            </a>
+          </div>
+
+          <p class="muted" style="margin-top:14px">
+            Soporte: WhatsApp <a href="https://wa.me/51966848416" target="_blank" rel="noopener" style="color:#cfe1ff;text-decoration:underline">+51 966848416</a>
+            • Correo: <a href="mailto:conjuntoarquitec@gmail.com" style="color:#cfe1ff;text-decoration:underline">conjuntoarquitec@gmail.com</a><br/>
+            Instalación: Descarga el <b>RAR</b> → extrae → ejecuta instalador o copia a Addins (según paquete).<br/>
+            Si Windows lo bloquea: clic derecho → <b>Propiedades</b> → <b>Desbloquear</b> → Aceptar.
           </p>
         </div>
 
@@ -56,7 +128,11 @@
           <h3>Demo / Capturas</h3>
           <p class="muted">Puedes poner links a YouTube o imágenes.</p>
           <div class="card" style="padding:14px;border-radius:14px">
-            <p style="margin:0" class="muted">🎥 Demo: https://www.youtube.com/@conjuntoarquitectura7219</p>
+            <p style="margin:0" class="muted">🎥 Demo:
+              <a href="https://www.youtube.com/@conjuntoarquitectura7219" target="_blank" rel="noopener" style="color:#cfe1ff;text-decoration:underline">
+                https://www.youtube.com/@conjuntoarquitectura7219
+              </a>
+            </p>
             <p style="margin:8px 0 0" class="muted">🧾 Guía: agrega un PDF o README con pasos</p>
           </div>
         </div>
@@ -65,6 +141,7 @@
       <div class="footer">© <span id="y"></span> Conjunto Arquitectura</div>
     </div>
   </div>
+
   <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
