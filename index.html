@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conjunto Arquitectura | Apps para Revit</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;background:#0b0f14;color:#eaf0ff}
+    .wrap{max-width:980px;margin:auto;padding:34px}
+    .card{background:#121a24;border:1px solid #203044;border-radius:18px;padding:26px}
+    h1{margin:0 0 8px;font-size:34px}
+    p{line-height:1.55;color:#cfe1ff;margin:8px 0}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#1b2635;border:1px solid #2a415b;font-size:12px}
+    .grid{display:grid;gap:16px;grid-template-columns:1.2fr .8fr;margin-top:18px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    a.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700}
+    .buy{background:#2b7cff;color:#08121f}
+    .dl{background:#1c2a3a;color:#eaf0ff;border:1px solid #2a415b}
+    ul{margin:10px 0 0 18px;color:#cfe1ff}
+    .muted{font-size:13px;color:#9fb6d6}
+    .footer{margin-top:18px;color:#9fb6d6;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <span class="badge">Revit 2023/2024/2025/2026 • Windows</span>
+      <h1>Conjunto Arquitectura</h1>
+      <p>Apps para Revit: descargas, soporte y mejoras continuas. (Sí, aquí es donde los clics innecesarios vienen a morir 😄)</p>
+
+      <div class="grid">
+        <div>
+          <h3>¿Qué incluye?</h3>
+          <ul>
+            <li>Herramientas para automatizar tareas repetitivas en Revit</li>
+            <li>Instaladores / DLL en ZIP por versión</li>
+            <li>Soporte y actualizaciones</li>
+          </ul>
+
+          <div class="btns">
+            <!-- Cambia este link por tu link de pago (MercadoPago/PayPal/Gumroad) -->
+            <a class="btn buy" href="https://TU-LINK-DE-PAGO" target="_blank" rel="noopener">Comprar</a>
+
+            <!-- Luego lo cambiaremos por el link real de tu Release -->
+            <a class="btn dl" href="https://github.com/conjuntoarquitec-collab/conjunto-arquitectura/releases" target="_blank" rel="noopener">Descargar</a>
+          </div>
+
+          <p class="muted">
+            Soporte: WhatsApp +51 XXX XXX XXX • Correo: tuemail@dominio.com<br/>
+            Instalación: Descarga el ZIP → Ejecuta instalador o copia a Addins (según paquete).
+          </p>
+        </div>
+
+        <div>
+          <h3>Demo / Capturas</h3>
+          <p class="muted">Puedes poner links a YouTube o imágenes.</p>
+          <div class="card" style="padding:14px;border-radius:14px">
+            <p style="margin:0" class="muted">🎥 Demo: https://youtu.be/tu_video</p>
+            <p style="margin:8px 0 0" class="muted">🧾 Guía: agrega un PDF o README con pasos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">© <span id="y"></span> Conjunto Arquitectura</div>
+    </div>
+  </div>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
