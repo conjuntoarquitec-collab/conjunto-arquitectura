@@ -40,7 +40,9 @@
     .title{margin:10px 0 6px;font-size:22px;font-weight:900}
     .desc{margin:0;color:var(--muted);font-size:13px}
     .cta{margin-top:14px;display:inline-block;background:var(--blue);color:#08121f;font-weight:900;padding:10px 14px;border-radius:12px}
-    .foot{margin-top:16px;color:var(--muted);font-size:12px}
+    .foot{margin-top:16px;color:var(--muted);font-size:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .dot{opacity:.7}
+    .vis{font-variant-numeric:tabular-nums}
   </style>
 </head>
 <body>
@@ -65,7 +67,9 @@
       </div>
 
       <div class="foot">
-        © <span id="y"></span> Conjunto • Visitas: <span id="visitCount">—</span>
+        <span>© <span id="y"></span> Conjunto</span>
+        <span class="dot">•</span>
+        <span class="vis">Visitas: <b id="visitas">—</b></span>
       </div>
     </div>
   </div>
@@ -74,23 +78,48 @@
     // Año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Contador de visitas (CountAPI)
-    (async () => {
-      try {
-        // IMPORTANTE: ponle un nombre único a tu contador (namespace)
-        const namespace = "conjunto-arquitectura-ghpages";
-        const key = "index";
-        const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
+    // ===== CONTADOR GLOBAL (GitHub Pages no tiene BD, por eso usamos un contador externo) =====
+    // 1) Cambia esto por algo único tuyo (sin espacios):
+    const NAMESPACE = "conjuntoarquitec-collab";   // <-- CAMBIA AQUÍ si quieres
+    const KEY = "conjunto-index-visitas";
 
-        const res = await fetch(url);
-        const data = await res.json();
+    const el = document.getElementById("visitas");
 
-        document.getElementById("visitCount").textContent =
-          (data.value || 0).toLocaleString("es-PE");
-      } catch (e) {
-        document.getElementById("visitCount").textContent = "—";
+    // Evita sumar 100 veces si el mismo usuario refresca (1 vez por día por navegador)
+    const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    const localFlag = `counted:${NAMESPACE}:${KEY}:${today}`;
+
+    async function fetchJSON(url){
+      const r = await fetch(url, { cache: "no-store" });
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return await r.json();
+    }
+
+    async function updateCounter(){
+      try{
+        // Si ya contó hoy en este navegador -> solo leer (GET)
+        if (localStorage.getItem(localFlag) === "1"){
+          const data = await fetchJSON(`https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`);
+          el.textContent = (data && typeof data.value === "number") ? data.value : "—";
+          return;
+        }
+
+        // Si NO contó hoy -> sumar (HIT)
+        const data = await fetchJSON(`https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`);
+        if (data && typeof data.value === "number"){
+          el.textContent = data.value;
+          localStorage.setItem(localFlag, "1");
+        }else{
+          el.textContent = "—";
+        }
+      }catch(err){
+        // Si algo bloquea el fetch (extensión, DNS, etc.)
+        el.textContent = "—";
+        console.warn("Contador no disponible:", err);
       }
-    })();
+    }
+
+    updateCounter();
   </script>
 </body>
 </html>
