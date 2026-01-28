@@ -64,9 +64,33 @@
         </a>
       </div>
 
-      <div class="foot">© <span id="y"></span> Conjunto</div>
+      <div class="foot">
+        © <span id="y"></span> Conjunto • Visitas: <span id="visitCount">—</span>
+      </div>
     </div>
   </div>
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+
+  <script>
+    // Año
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Contador de visitas (CountAPI)
+    (async () => {
+      try {
+        // IMPORTANTE: ponle un nombre único a tu contador (namespace)
+        const namespace = "conjunto-arquitectura-ghpages";
+        const key = "index";
+        const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        document.getElementById("visitCount").textContent =
+          (data.value || 0).toLocaleString("es-PE");
+      } catch (e) {
+        document.getElementById("visitCount").textContent = "—";
+      }
+    })();
+  </script>
 </body>
 </html>
