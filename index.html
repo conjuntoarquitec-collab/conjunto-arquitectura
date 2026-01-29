@@ -79,21 +79,53 @@
       display:flex;
       gap:12px;
       align-items:center;
+      flex-wrap:wrap;
     }
 
+    /* Botones */
     a.btn{
-      display:inline-block;
+      display:inline-flex;              /* <- asegura que TODO el “pill” sea clicable */
+      align-items:center;
+      justify-content:center;
       padding:12px 18px;
       border-radius:14px;
       text-decoration:none;
       font-weight:900;
-      transition:filter .15s ease, transform .10s ease;
       user-select:none;
+      cursor:pointer;
+      transition:filter .15s ease, transform .10s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;
+      min-width:110px;
     }
-    a.btn:hover{filter:brightness(1.08)}
     a.btn:active{transform:scale(.99)}
-    .primary{background:var(--accent);color:#08121f}
-    .ghost{background:#1c2a3a;color:var(--txt);border:1px solid #2a415b}
+
+    .primary{
+      background:var(--accent);
+      color:#08121f;
+      box-shadow: 0 10px 20px rgba(43,124,255,.14);
+    }
+    .primary:hover{
+      filter:brightness(1.08);
+      box-shadow: 0 14px 26px rgba(43,124,255,.20);
+    }
+
+    .ghost{
+      background:#1c2a3a;
+      color:var(--txt);
+      border:1px solid #2a415b;
+    }
+    /* ✅ “Sombreado” bonito en hover */
+    .ghost:hover{
+      background:rgba(28,42,58,.88);
+      border-color:rgba(43,124,255,.45);
+      box-shadow: 0 14px 26px rgba(0,0,0,.28);
+      filter:brightness(1.06);
+    }
+
+    /* Accesibilidad (tab) */
+    a.btn:focus-visible{
+      outline:2px solid rgba(43,124,255,.85);
+      outline-offset:3px;
+    }
 
     .foot{
       margin-top:20px;
@@ -106,8 +138,6 @@
     }
     .dot{opacity:.6}
     .vis b{color:#eaf0ff}
-    a.link{color:#cfe1ff;text-decoration:none}
-    a.link:hover{text-decoration:underline}
 
     @media (max-width:900px){
       h1{font-size:38px}
@@ -138,7 +168,9 @@
           <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
           <div class="btnRow">
             <a class="btn primary" href="estructura.html">Abrir</a>
-            <a class="btn ghost" href="https://wa.me/51966848416?text=Hola%20Conjunto%20Estructura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)" target="_blank" rel="noopener">Comprar</a>
+            <a class="btn ghost"
+               href="https://wa.me/51966848416?text=Hola%20Conjunto%20Estructura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)"
+               target="_blank" rel="noopener">Comprar</a>
           </div>
         </div>
       </div>
@@ -146,7 +178,7 @@
       <div class="foot">
         <span>© <span id="y"></span> Conjunto</span>
         <span class="dot">•</span>
-        <span class="vis">Visitas: <b id="visitas">cargando…</b></span>
+        <span class="vis">Visitas: <b id="visitas">—</b></span>
       </div>
     </div>
   </div>
@@ -156,12 +188,11 @@
     document.getElementById("y").textContent = new Date().getFullYear();
 
     // ===== CONTADOR GLOBAL (CountAPI) =====
-    // Nota: si algún AdBlock bloquea CountAPI, verás "—".
-    const NAMESPACE = "conjuntoarquitec-collab"; // único para ti
-    const KEY = "conjunto-index-visitas";       // único para index
+    // Si un AdBlock lo bloquea, quedará en "—" (sin romper nada).
+    const NAMESPACE = "conjuntoarquitec-collab"; // tu “espacio”
+    const KEY = "conjunto-index-visitas";       // tu “llave” para index
 
-    // true = suma cada vez que se abre (también refresh).
-    // false = suma solo 1 vez por día por navegador.
+    // Mantener esto como lo venías usando:
     const COUNT_EVERY_LOAD = true;
 
     const el = document.getElementById("visitas");
@@ -195,7 +226,7 @@
         }
       }catch(err){
         el.textContent = "—";
-        console.warn("Contador bloqueado o no disponible:", err);
+        console.warn("Contador no disponible (bloqueado o caído):", err);
       }
     }
 
