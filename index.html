@@ -3,88 +3,150 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Conjunto | Selecciona tu paquete</title>
+  <title>Conjunto | Apps para Revit</title>
+
   <style>
     :root{
       --bg:#0b0f14;
       --card:#121a24;
-      --stroke:#203044;
-      --stroke2:#2a415b;
-      --txt:#eaf0ff;
+      --card2:rgba(10,14,20,.35);
+      --border:rgba(42,65,91,.55);
       --muted:#9fb6d6;
-      --blue:#2b7cff;
+      --txt:#eaf0ff;
+      --accent:#2b7cff;
+      --accent2:rgba(43,124,255,.55);
     }
-    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--txt)}
-    .wrap{max-width:980px;margin:auto;padding:40px 18px}
-    .panel{background:var(--card);border:1px solid var(--stroke);border-radius:22px;padding:28px}
-    h1{margin:0 0 6px;font-size:34px}
-    p{margin:0 0 18px;color:var(--muted);line-height:1.55}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media (max-width:780px){ .grid{grid-template-columns:1fr;} }
 
-    a.pkg{
-      display:block;text-decoration:none;color:inherit;
+    body{
+      font-family:system-ui,Segoe UI,Roboto,Arial;
+      margin:0;
+      background:var(--bg);
+      color:var(--txt);
+    }
+
+    .wrap{max-width:1080px;margin:auto;padding:34px}
+
+    .shell{
+      background:linear-gradient(180deg, rgba(18,26,36,.95), rgba(18,26,36,.75));
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:26px;
+      box-shadow: 0 12px 34px rgba(0,0,0,.32);
+    }
+
+    .badge{
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      background:#1b2635;border:1px solid #2a415b;font-size:12px;
+      color:#d7e6ff;
+    }
+
+    h1{margin:10px 0 6px;font-size:46px;letter-spacing:.2px}
+    p{line-height:1.55;color:#cfe1ff;margin:8px 0}
+
+    .cards{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .appCard{
       background:rgba(10,14,20,.35);
       border:1px solid rgba(42,65,91,.55);
       border-radius:18px;
-      padding:18px;
-      position:relative;
-      transition:transform .12s ease, filter .15s ease, border-color .15s ease, background .15s ease;
-    }
-    a.pkg:hover{
-      filter:brightness(1.08);
-      border-color: rgba(43,124,255,.55);
-      background: rgba(28,42,58,.55);
-      transform: translateY(-1px);
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:160px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
     }
 
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#1b2635;border:1px solid var(--stroke2);font-size:12px;color:var(--txt)}
-    .title{margin:10px 0 6px;font-size:22px;font-weight:900}
-    .desc{margin:0;color:var(--muted);font-size:13px}
-    .cta{margin-top:14px;display:inline-block;background:var(--blue);color:#08121f;font-weight:900;padding:10px 14px;border-radius:12px}
+    .appTitle{
+      font-size:30px;
+      font-weight:900;
+      margin:0;
+    }
+
+    .appDesc{
+      margin:0;
+      color:rgba(207,225,255,.85);
+      font-size:14px;
+    }
+
+    .btnRow{
+      margin-top:auto;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    a.btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:900;
+      transition:filter .15s ease, transform .10s ease;
+      user-select:none;
+    }
+    a.btn:hover{filter:brightness(1.08)}
+    a.btn:active{transform:scale(.99)}
+    .primary{background:var(--accent);color:#08121f}
+    .ghost{background:#1c2a3a;color:var(--txt);border:1px solid #2a415b}
 
     .foot{
-      margin-top:16px;color:var(--muted);font-size:12px;
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center
+      margin-top:20px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
     }
-    .dot{opacity:.7}
-    .vis{font-variant-numeric:tabular-nums}
-    .badgeCount img{height:18px;vertical-align:middle;opacity:.95}
+    .dot{opacity:.6}
+    .vis b{color:#eaf0ff}
+    a.link{color:#cfe1ff;text-decoration:none}
+    a.link:hover{text-decoration:underline}
+
+    @media (max-width:900px){
+      h1{font-size:38px}
+      .cards{grid-template-columns:1fr}
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="panel">
+    <div class="shell">
       <span class="badge">Revit 2023/2024/2025/2026 • Windows</span>
       <h1>Conjunto</h1>
       <p>Elige qué paquete quieres abrir. (Dos puertas: una te da arquitectura… la otra también, pero con fierros 😄)</p>
 
-      <div class="grid">
-        <a class="pkg" href="./arquitectura.html">
-          <div class="title">1) Conjunto Arquitectura</div>
-          <p class="desc">Acabados, metrados, renombrados, exportación, encofrados, etc.</p>
-          <span class="cta">Abrir</span>
-        </a>
+      <div class="cards">
+        <div class="appCard">
+          <div class="appTitle">1) Conjunto Arquitectura</div>
+          <p class="appDesc">Acabados, metrados, renombrados, exportación, encofrados, etc.</p>
+          <div class="btnRow">
+            <a class="btn primary" href="arquitectura.html">Abrir</a>
+            <a class="btn ghost" href="https://www.youtube.com/@conjuntoarquitectura7219" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
 
-        <a class="pkg" href="./estructura.html">
-          <div class="title">2) Conjunto Estructura</div>
-          <p class="desc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
-          <span class="cta">Abrir</span>
-        </a>
+        <div class="appCard">
+          <div class="appTitle">2) Conjunto Estructura</div>
+          <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
+          <div class="btnRow">
+            <a class="btn primary" href="estructura.html">Abrir</a>
+            <a class="btn ghost" href="https://wa.me/51966848416?text=Hola%20Conjunto%20Estructura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
       </div>
 
       <div class="foot">
         <span>© <span id="y"></span> Conjunto</span>
         <span class="dot">•</span>
-
-        <!-- Modo 1: número "peladito" (CountAPI) -->
-        <span class="vis" id="visWrap">Visitas: <b id="visitas">—</b></span>
-
-        <!-- Modo 2 (fallback): badge-imagen si el API está bloqueado -->
-        <span class="badgeCount" id="badgeWrap" style="display:none">
-          Visitas:
-          <img id="badgeImg" alt="contador de visitas" />
-        </span>
+        <span class="vis">Visitas: <b id="visitas">cargando…</b></span>
       </div>
     </div>
   </div>
@@ -93,29 +155,19 @@
     // Año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // ===== CONTADOR GLOBAL =====
-    // GitHub Pages es estático => necesitamos un servicio externo.
+    // ===== CONTADOR GLOBAL (CountAPI) =====
+    // Nota: si algún AdBlock bloquea CountAPI, verás "—".
+    const NAMESPACE = "conjuntoarquitec-collab"; // único para ti
+    const KEY = "conjunto-index-visitas";       // único para index
 
-    // 1) Identificador único (ponle algo tuyo para que nadie choque contigo):
-    const NAMESPACE = "conjuntoarquitec";     // cámbialo si quieres (sin espacios)
-    const KEY       = "index-visitas";       // nombre del contador
+    // true = suma cada vez que se abre (también refresh).
+    // false = suma solo 1 vez por día por navegador.
+    const COUNT_EVERY_LOAD = true;
 
-    const elNum = document.getElementById("visitas");
-    const visWrap = document.getElementById("visWrap");
-    const badgeWrap = document.getElementById("badgeWrap");
-    const badgeImg = document.getElementById("badgeImg");
-
-    // Si quieres que sume SIEMPRE cada refresh, ponlo en true.
-    // Si quieres evitar que el mismo usuario sume mil veces, déjalo en false (1 vez/día por navegador).
-    const COUNT_EVERY_LOAD = false;
+    const el = document.getElementById("visitas");
 
     const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
     const localFlag = `counted:${NAMESPACE}:${KEY}:${today}`;
-
-    function toNumber(v){
-      const n = Number(v);
-      return Number.isFinite(n) ? n : null;
-    }
 
     async function fetchJSON(url){
       const r = await fetch(url, { cache: "no-store" });
@@ -123,62 +175,27 @@
       return await r.json();
     }
 
-    async function countapiGet(){
-      const data = await fetchJSON(`https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`);
-      const n = data ? toNumber(data.value) : null;
-      return n;
-    }
-
-    async function countapiHit(){
-      const data = await fetchJSON(`https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`);
-      const n = data ? toNumber(data.value) : null;
-      return n;
-    }
-
-    async function countapiCreateIfNeeded(){
-      // Por si el API exige “crear” primero en algunos casos
-      try{
-        await fetchJSON(`https://api.countapi.xyz/create?namespace=${encodeURIComponent(NAMESPACE)}&key=${encodeURIComponent(KEY)}&value=0`);
-      }catch(e){
-        // si falla, no pasa nada: igual intentamos hit/get
-      }
-    }
-
-    function showBadgeFallback(){
-      // Fallback: contador como imagen (suele pasar bloqueos de CORS/AdBlock mejor que fetch)
-      // Nota: esto cuenta por "path". Cambia el path si quieres separar contadores.
-      const pagePath = "conjunto-arquitectura/index";
-      badgeImg.src = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${encodeURIComponent(location.href)}&count_bg=%232B7CFF&title_bg=%23121A24&icon=&icon_color=%23E7E7E7&title=visitas&edge_flat=false`;
-      visWrap.style.display = "none";
-      badgeWrap.style.display = "inline-block";
-    }
-
     async function updateCounter(){
       try{
-        // Si queremos evitar que el mismo navegador sume varias veces hoy:
-        if (!COUNT_EVERY_LOAD && localStorage.getItem(localFlag) === "1"){
-          // solo leer
-          let n = await countapiGet();
-          if (n === null) { await countapiCreateIfNeeded(); n = await countapiGet(); }
-          elNum.textContent = (n === null) ? "—" : n;
+        const ns = encodeURIComponent(NAMESPACE);
+        const key = encodeURIComponent(KEY);
+
+        if(!COUNT_EVERY_LOAD && localStorage.getItem(localFlag) === "1"){
+          const data = await fetchJSON(`https://api.countapi.xyz/get/${ns}/${key}`);
+          el.textContent = (data && typeof data.value === "number") ? data.value : "—";
           return;
         }
 
-        // sumar
-        let n = await countapiHit();
-        if (n === null) { await countapiCreateIfNeeded(); n = await countapiHit(); }
-
-        if (n !== null){
-          elNum.textContent = n;
-          if (!COUNT_EVERY_LOAD) localStorage.setItem(localFlag, "1");
-        }else{
-          // si no pudimos leer el número, fallback
-          showBadgeFallback();
+        const data = await fetchJSON(`https://api.countapi.xyz/hit/${ns}/${key}`);
+        if (data && typeof data.value === "number"){
+          el.textContent = data.value;
+          if(!COUNT_EVERY_LOAD) localStorage.setItem(localFlag, "1");
+        } else {
+          el.textContent = "—";
         }
       }catch(err){
-        // Normalmente aquí cae si AdBlock/Brave bloquea countapi
-        console.warn("Contador bloqueado/no disponible:", err);
-        showBadgeFallback();
+        el.textContent = "—";
+        console.warn("Contador bloqueado o no disponible:", err);
       }
     }
 
