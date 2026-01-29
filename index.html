@@ -8,11 +8,10 @@
   <style>
     :root{
       --bg:#0b0f14;
-      --card:#121a24;
-      --card2:rgba(10,14,20,.35);
       --border:rgba(42,65,91,.55);
       --muted:#9fb6d6;
       --txt:#eaf0ff;
+
       --accent:#2b7cff;
       --accent2:rgba(43,124,255,.55);
     }
@@ -35,8 +34,10 @@
     }
 
     .badge{
-      display:inline-block;padding:6px 10px;border-radius:999px;
-      background:#1b2635;border:1px solid #2a415b;font-size:12px;
+      display:inline-block;
+      padding:6px 10px;border-radius:999px;
+      background:#1b2635;border:1px solid #2a415b;
+      font-size:12px;
       color:#d7e6ff;
     }
 
@@ -50,7 +51,10 @@
       gap:18px;
     }
 
+    /* ===== TARJETA CLICABLE + BRILLO ===== */
     .appCard{
+      position:relative;
+      overflow:hidden;
       background:rgba(10,14,20,.35);
       border:1px solid rgba(42,65,91,.55);
       border-radius:18px;
@@ -59,7 +63,63 @@
       flex-direction:column;
       gap:10px;
       min-height:160px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+      cursor:pointer;
+      transform:translateY(0);
+      transition:
+        transform .14s ease,
+        background .14s ease,
+        border-color .14s ease,
+        box-shadow .14s ease,
+        filter .14s ease;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02),
+        0 10px 24px rgba(0,0,0,.18);
+    }
+
+    /* capa de brillo (se “mueve” con el mouse por JS) */
+    .appCard::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:18px;
+      background:
+        radial-gradient(600px circle at var(--mx,50%) var(--my,30%),
+          rgba(43,124,255,.22),
+          rgba(43,124,255,.10) 18%,
+          transparent 45%);
+      opacity:0;
+      transition:opacity .14s ease;
+      pointer-events:none;
+    }
+
+    .appCard:hover{
+      transform:translateY(-2px);
+      background:rgba(28,42,58,.55);
+      border-color:rgba(43,124,255,.45);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02),
+        0 18px 40px rgba(0,0,0,.35);
+      filter:brightness(1.06);
+    }
+    .appCard:hover::before{opacity:1;}
+
+    /* Link invisible para que clic en cualquier lado abra */
+    .cardLink{
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      z-index:1;
+      display:block;
+    }
+
+    /* Contenido por encima del link invisible */
+    .cardContent{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      height:100%;
     }
 
     .appTitle{
@@ -82,9 +142,9 @@
       flex-wrap:wrap;
     }
 
-    /* Botones */
+    /* ===== BOTÓN “ABRIR” (BRILLO REAL) ===== */
     a.btn{
-      display:inline-flex;              /* <- asegura que TODO el “pill” sea clicable */
+      display:inline-flex;
       align-items:center;
       justify-content:center;
       padding:12px 18px;
@@ -93,35 +153,31 @@
       font-weight:900;
       user-select:none;
       cursor:pointer;
-      transition:filter .15s ease, transform .10s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;
-      min-width:110px;
+      min-width:120px;
+      transition:
+        transform .10s ease,
+        filter .14s ease,
+        box-shadow .14s ease;
+      z-index:3;
     }
+
     a.btn:active{transform:scale(.99)}
 
     .primary{
-      background:var(--accent);
       color:#08121f;
-      box-shadow: 0 10px 20px rgba(43,124,255,.14);
+      background:linear-gradient(180deg, rgba(43,124,255,1), rgba(30,92,205,1));
+      box-shadow:
+        0 10px 20px rgba(43,124,255,.18),
+        inset 0 0 0 1px rgba(255,255,255,.10);
     }
     .primary:hover{
-      filter:brightness(1.08);
-      box-shadow: 0 14px 26px rgba(43,124,255,.20);
+      filter:brightness(1.10);
+      box-shadow:
+        0 16px 30px rgba(43,124,255,.26),
+        0 0 0 3px rgba(43,124,255,.18),
+        inset 0 0 0 1px rgba(255,255,255,.16);
     }
 
-    .ghost{
-      background:#1c2a3a;
-      color:var(--txt);
-      border:1px solid #2a415b;
-    }
-    /* ✅ “Sombreado” bonito en hover */
-    .ghost:hover{
-      background:rgba(28,42,58,.88);
-      border-color:rgba(43,124,255,.45);
-      box-shadow: 0 14px 26px rgba(0,0,0,.28);
-      filter:brightness(1.06);
-    }
-
-    /* Accesibilidad (tab) */
     a.btn:focus-visible{
       outline:2px solid rgba(43,124,255,.85);
       outline-offset:3px;
@@ -154,23 +210,31 @@
       <p>Elige qué paquete quieres abrir. (Dos puertas: una te da arquitectura… la otra también, pero con fierros 😄)</p>
 
       <div class="cards">
-        <div class="appCard">
-          <div class="appTitle">1) Conjunto Arquitectura</div>
-          <p class="appDesc">Acabados, metrados, renombrados, exportación, encofrados, etc.</p>
-          <div class="btnRow">
-            <a class="btn primary" href="arquitectura.html">Abrir</a>
-            <a class="btn ghost" href="https://www.youtube.com/@conjuntoarquitectura7219" target="_blank" rel="noopener">YouTube</a>
+        <!-- ARQUITECTURA -->
+        <div class="appCard" data-tilt>
+          <a class="cardLink" href="arquitectura.html" aria-label="Abrir Conjunto Arquitectura"></a>
+
+          <div class="cardContent">
+            <div class="appTitle">1) Conjunto Arquitectura</div>
+            <p class="appDesc">Acabados, metrados, renombrados, exportación, encofrados, etc.</p>
+
+            <div class="btnRow">
+              <a class="btn primary" href="arquitectura.html">Abrir</a>
+            </div>
           </div>
         </div>
 
-        <div class="appCard">
-          <div class="appTitle">2) Conjunto Estructura</div>
-          <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
-          <div class="btnRow">
-            <a class="btn primary" href="estructura.html">Abrir</a>
-            <a class="btn ghost"
-               href="https://wa.me/51966848416?text=Hola%20Conjunto%20Estructura%2C%20quiero%20comprar%20una%20app%20para%20Revit.%20%C2%BFMe%20indicas%20precio%20y%20forma%20de%20pago%3F%20(Version%20Revit%3A%20____)"
-               target="_blank" rel="noopener">Comprar</a>
+        <!-- ESTRUCTURA -->
+        <div class="appCard" data-tilt>
+          <a class="cardLink" href="estructura.html" aria-label="Abrir Conjunto Estructura"></a>
+
+          <div class="cardContent">
+            <div class="appTitle">2) Conjunto Estructura</div>
+            <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
+
+            <div class="btnRow">
+              <a class="btn primary" href="estructura.html">Abrir</a>
+            </div>
           </div>
         </div>
       </div>
@@ -187,17 +251,30 @@
     // Año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // ===== CONTADOR GLOBAL (CountAPI) =====
-    // Si un AdBlock lo bloquea, quedará en "—" (sin romper nada).
-    const NAMESPACE = "conjuntoarquitec-collab"; // tu “espacio”
-    const KEY = "conjunto-index-visitas";       // tu “llave” para index
+    // ===== “Brillo que sigue al mouse” en cada tarjeta =====
+    (function(){
+      var cards = document.querySelectorAll("[data-tilt]");
+      for (var i=0;i<cards.length;i++){
+        (function(card){
+          card.addEventListener("pointermove", function(e){
+            var r = card.getBoundingClientRect();
+            var x = ((e.clientX - r.left) / r.width) * 100;
+            var y = ((e.clientY - r.top) / r.height) * 100;
+            card.style.setProperty("--mx", x + "%");
+            card.style.setProperty("--my", y + "%");
+          });
+        })(cards[i]);
+      }
+    })();
 
-    // Mantener esto como lo venías usando:
+    // ===== CONTADOR GLOBAL (CountAPI) =====
+    // Si AdBlock lo bloquea, se queda en "—" sin romper nada.
+    const NAMESPACE = "conjuntoarquitec-collab";
+    const KEY = "conjunto-index-visitas";
     const COUNT_EVERY_LOAD = true;
 
     const el = document.getElementById("visitas");
-
-    const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    const today = new Date().toISOString().slice(0,10);
     const localFlag = `counted:${NAMESPACE}:${KEY}:${today}`;
 
     async function fetchJSON(url){
