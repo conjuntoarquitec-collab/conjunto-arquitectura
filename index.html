@@ -14,6 +14,7 @@
 
       --accent:#2b7cff;
       --accent2:rgba(43,124,255,.55);
+      --blueText:#4ea6ff;
     }
 
     body{
@@ -51,7 +52,6 @@
       gap:18px;
     }
 
-    /* ===== TARJETA CLICABLE + BRILLO ===== */
     .appCard{
       position:relative;
       overflow:hidden;
@@ -76,7 +76,6 @@
         0 10px 24px rgba(0,0,0,.18);
     }
 
-    /* capa de brillo (se “mueve” con el mouse por JS) */
     .appCard::before{
       content:"";
       position:absolute;
@@ -101,9 +100,9 @@
         0 18px 40px rgba(0,0,0,.35);
       filter:brightness(1.06);
     }
+
     .appCard:hover::before{opacity:1;}
 
-    /* Link invisible para que clic en cualquier lado abra */
     .cardLink{
       position:absolute;
       inset:0;
@@ -112,7 +111,6 @@
       display:block;
     }
 
-    /* Contenido por encima del link invisible */
     .cardContent{
       position:relative;
       z-index:2;
@@ -142,7 +140,6 @@
       flex-wrap:wrap;
     }
 
-    /* ===== BOTÓN “ABRIR” (BRILLO REAL) ===== */
     a.btn{
       display:inline-flex;
       align-items:center;
@@ -170,6 +167,7 @@
         0 10px 20px rgba(43,124,255,.18),
         inset 0 0 0 1px rgba(255,255,255,.10);
     }
+
     .primary:hover{
       filter:brightness(1.10);
       box-shadow:
@@ -183,11 +181,14 @@
       outline-offset:3px;
     }
 
-    /* ===== BOTÓN VERSION GRATUITA ===== */
-    .free-version-wrap{
+    /* ===== ZONA VERSION GRATUITA ===== */
+    .free-zone{
       display:flex;
+      flex-direction:column;
+      align-items:center;
       justify-content:center;
       margin-top:34px;
+      text-align:center;
     }
 
     .free-version-btn{
@@ -205,8 +206,7 @@
       font-size:1.18rem;
       letter-spacing:.6px;
       color:#ffffff;
-      background:
-        linear-gradient(180deg, rgba(21,40,66,.96), rgba(10,20,34,.96));
+      background:linear-gradient(180deg, rgba(21,40,66,.96), rgba(10,20,34,.96));
       border:1px solid rgba(68,145,255,.45);
       box-shadow:
         0 0 0 1px rgba(255,255,255,.03) inset,
@@ -244,8 +244,7 @@
       position:absolute;
       inset:-1px;
       border-radius:22px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(70,170,255,.22), transparent 55%);
+      background:radial-gradient(circle at 50% 0%, rgba(70,170,255,.22), transparent 55%);
       pointer-events:none;
     }
 
@@ -269,6 +268,53 @@
       text-shadow:0 0 10px rgba(120,190,255,.18);
     }
 
+    .free-info{
+      margin-top:18px;
+      max-width:760px;
+      width:100%;
+      padding:18px 22px;
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(13,22,35,.92), rgba(9,16,27,.86));
+      border:1px solid rgba(43,124,255,.18);
+      box-shadow:
+        0 12px 26px rgba(0,0,0,.24),
+        inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+
+    .free-title{
+      margin:0 0 14px;
+      font-size:1.12rem;
+      font-weight:900;
+      letter-spacing:.4px;
+      color:#ffffff;
+    }
+
+    .free-line{
+      margin:6px 0;
+      font-size:1rem;
+      color:#dce9ff;
+      line-height:1.55;
+    }
+
+    .free-label{
+      color:#ffffff;
+      font-weight:800;
+    }
+
+    .free-blue{
+      color:var(--blueText);
+      font-weight:900;
+    }
+
+    .free-note{
+      margin-top:16px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:.88rem;
+      line-height:1.55;
+      color:#aecaef;
+    }
+
     @keyframes shine{
       0%{ left:-130%; }
       100%{ left:160%; }
@@ -283,6 +329,7 @@
       color:var(--muted);
       font-size:13px;
     }
+
     .dot{opacity:.6}
     .vis b{color:#eaf0ff}
 
@@ -295,6 +342,14 @@
       .free-version-btn{
         width:100%;
         min-width:0;
+      }
+
+      .free-info{
+        padding:16px;
+      }
+
+      .free-line{
+        font-size:.95rem;
       }
     }
   </style>
@@ -344,11 +399,39 @@
       </div>
     </div>
 
-    <!-- NUEVO BOTÓN -->
-    <div class="free-version-wrap">
-      <a class="free-version-btn" href="TU_LINK_DE_VERSION_GRATUITA" aria-label="Abrir versión gratuita">
+    <!-- VERSION GRATUITA -->
+    <div class="free-zone">
+      <a
+        class="free-version-btn"
+        href="https://wa.me/51TU_NUMERO_AQUI?text=QUIERO%20SOLICITAR%20MI%20VERSION%20DE%20PRUEBA%20ACA%20TE%20ENVIO%20LA%20FOTO%20QUE%20COMPARTI%20TU%20VIDEO"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Solicitar versión gratuita por WhatsApp">
         <span>VERSION GRATUITA</span>
       </a>
+    
+      <div class="free-info">
+        <div class="free-title">CÓDIGO DE ACTIVACIÓN GRATIS</div>
+    
+        <div class="free-line">
+          <span class="free-label">código:</span>
+          <span class="free-blue">CA-GRAT-GRAT-GRAT-GRAT-GRAT</span>
+        </div>
+    
+        <div class="free-line">
+          <span class="free-label">correo:</span>
+          <span class="free-blue">conjuntoarquitec@gmail.com</span>
+        </div>
+    
+        <div class="free-line">
+          <span class="free-label">fecha:</span>
+          <span>25/03/2026 al 15/04/2026</span>
+        </div>
+    
+        <div class="free-note">
+          para ampliar tu prueba solo comparte un video de tiktok a una de tus redes, envíame foto dale like y te agrego más días
+        </div>
+      </div>
     </div>
   </div>
 
@@ -356,7 +439,7 @@
     // Año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // ===== “Brillo que sigue al mouse” en cada tarjeta =====
+    // Brillo que sigue al mouse
     (function(){
       var cards = document.querySelectorAll("[data-tilt]");
       for (var i=0;i<cards.length;i++){
@@ -372,8 +455,7 @@
       }
     })();
 
-    // ===== CONTADOR GLOBAL (CountAPI) =====
-    // Si AdBlock lo bloquea, se queda en "—" sin romper nada.
+    // Contador global
     const NAMESPACE = "conjuntoarquitec-collab";
     const KEY = "conjunto-index-visitas";
     const COUNT_EVERY_LOAD = true;
@@ -408,7 +490,7 @@
         }
       }catch(err){
         el.textContent = "—";
-        console.warn("Contador no disponible (bloqueado o caído):", err);
+        console.warn("Contador no disponible:", err);
       }
     }
 
