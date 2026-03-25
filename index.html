@@ -183,6 +183,97 @@
       outline-offset:3px;
     }
 
+    /* ===== BOTÓN VERSION GRATUITA ===== */
+    .free-version-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:34px;
+    }
+
+    .free-version-btn{
+      position:relative;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:320px;
+      min-height:84px;
+      padding:0 28px;
+      border-radius:22px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:1.18rem;
+      letter-spacing:.6px;
+      color:#ffffff;
+      background:
+        linear-gradient(180deg, rgba(21,40,66,.96), rgba(10,20,34,.96));
+      border:1px solid rgba(68,145,255,.45);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 0 18px rgba(43,124,255,.18),
+        0 12px 28px rgba(0,0,0,.30);
+      transition:
+        transform .16s ease,
+        filter .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease;
+    }
+
+    .free-version-btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-130%;
+      width:70%;
+      height:100%;
+      transform:skewX(-22deg);
+      background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,.05) 20%,
+        rgba(255,255,255,.45) 50%,
+        rgba(255,255,255,.08) 80%,
+        transparent 100%
+      );
+      animation:shine 3s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .free-version-btn::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(70,170,255,.22), transparent 55%);
+      pointer-events:none;
+    }
+
+    .free-version-btn:hover{
+      transform:translateY(-3px) scale(1.02);
+      filter:brightness(1.08);
+      border-color:rgba(100,180,255,.75);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.05) inset,
+        0 0 24px rgba(43,124,255,.28),
+        0 18px 38px rgba(0,0,0,.38);
+    }
+
+    .free-version-btn:active{
+      transform:scale(.985);
+    }
+
+    .free-version-btn span{
+      position:relative;
+      z-index:2;
+      text-shadow:0 0 10px rgba(120,190,255,.18);
+    }
+
+    @keyframes shine{
+      0%{ left:-130%; }
+      100%{ left:160%; }
+    }
+
     .foot{
       margin-top:20px;
       display:flex;
@@ -198,6 +289,13 @@
     @media (max-width:900px){
       h1{font-size:38px}
       .cards{grid-template-columns:1fr}
+    }
+
+    @media (max-width:640px){
+      .free-version-btn{
+        width:100%;
+        min-width:0;
+      }
     }
   </style>
 </head>
@@ -244,6 +342,13 @@
         <span class="dot">•</span>
         <span class="vis">Si deseas la versión de prueba comparte la pagina web, comparte un video de tiktok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días (con evidencia): <b id="visitas">—</b></span>
       </div>
+    </div>
+
+    <!-- NUEVO BOTÓN -->
+    <div class="free-version-wrap">
+      <a class="free-version-btn" href="TU_LINK_DE_VERSION_GRATUITA" aria-label="Abrir versión gratuita">
+        <span>VERSION GRATUITA</span>
+      </a>
     </div>
   </div>
 
