@@ -334,6 +334,42 @@
       flex-wrap:wrap;
     }
 
+    /* VIDEO YOUTUBE EMBEBIDO */
+    .videoBox{
+      margin-top:14px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(10,14,20,.35);
+      padding:12px;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .videoBoxTitle{
+      margin:0 0 10px;
+      font-size:14px;
+      font-weight:900;
+      color:#eaf0ff;
+    }
+
+    .videoFrame{
+      position:relative;
+      width:100%;
+      aspect-ratio:16 / 9;
+      border-radius:14px;
+      overflow:hidden;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(42,65,91,.55);
+    }
+
+    .videoFrame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
     /* GALERÍA */
     .galleryWrap{margin-top:18px}
 
@@ -468,6 +504,18 @@
               </a>
             </p>
             <p style="margin:8px 0 0" class="muted">🧾 Guía: Videos tutoriales en YouTube y TikTok (incluido también en la app).</p>
+          </div>
+
+          <div class="videoBox">
+            <p class="videoBoxTitle">🎬 Video demostrativo</p>
+            <div class="videoFrame">
+              <iframe
+                src="https://www.youtube.com/embed/jL7r5pwY8iA"
+                title="Video demostrativo Conjunto Estructura"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
         </div>
       </div>
