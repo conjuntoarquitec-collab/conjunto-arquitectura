@@ -7,43 +7,80 @@
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --border:rgba(42,65,91,.55);
-      --muted:#9fb6d6;
-      --txt:#eaf0ff;
+      --bg:#ffffff;
+      --shell:#ffffff;
+      --card:#f5f9ff;
+      --cardHover:#eaf3ff;
+      --border:rgba(0,80,180,.22);
+      --muted:#245f9f;
+      --txt:#004a99;
 
-      --accent:#2b7cff;
-      --accent2:rgba(43,124,255,.55);
-      --blueText:#4ea6ff;
+      --accent:#006dff;
+      --accent2:rgba(0,109,255,.45);
+      --blueText:#005ecb;
+      --deepBlue:#003f8f;
+      --lightBlue:#eaf3ff;
+      --new:#00a6ff;
+      --new2:#004cff;
+    }
+
+    *{
+      box-sizing:border-box;
     }
 
     body{
       font-family:system-ui,Segoe UI,Roboto,Arial;
       margin:0;
-      background:var(--bg);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(0,109,255,.12), transparent 32%),
+        radial-gradient(circle at 90% 10%, rgba(0,166,255,.10), transparent 34%),
+        var(--bg);
       color:var(--txt);
+      font-weight:700;
     }
 
-    .wrap{max-width:1080px;margin:auto;padding:34px}
+    .wrap{
+      max-width:1080px;
+      margin:auto;
+      padding:34px;
+    }
 
     .shell{
-      background:linear-gradient(180deg, rgba(18,26,36,.95), rgba(18,26,36,.75));
+      background:rgba(255,255,255,.96);
       border:1px solid var(--border);
       border-radius:22px;
       padding:26px;
-      box-shadow: 0 12px 34px rgba(0,0,0,.32);
+      box-shadow:
+        0 18px 42px rgba(0,80,180,.12),
+        inset 0 0 0 1px rgba(255,255,255,.70);
     }
 
     .badge{
       display:inline-block;
-      padding:6px 10px;border-radius:999px;
-      background:#1b2635;border:1px solid #2a415b;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#eaf3ff;
+      border:1px solid rgba(0,109,255,.25);
       font-size:12px;
-      color:#d7e6ff;
+      color:var(--deepBlue);
+      font-weight:900;
+      letter-spacing:.2px;
     }
 
-    h1{margin:10px 0 6px;font-size:46px;letter-spacing:.2px}
-    p{line-height:1.55;color:#cfe1ff;margin:8px 0}
+    h1{
+      margin:10px 0 6px;
+      font-size:46px;
+      letter-spacing:.2px;
+      color:var(--deepBlue);
+      font-weight:1000;
+    }
+
+    p{
+      line-height:1.55;
+      color:var(--blueText);
+      margin:8px 0;
+      font-weight:800;
+    }
 
     .cards{
       margin-top:16px;
@@ -55,14 +92,14 @@
     .appCard{
       position:relative;
       overflow:hidden;
-      background:rgba(10,14,20,.35);
-      border:1px solid rgba(42,65,91,.55);
+      background:var(--card);
+      border:1px solid var(--border);
       border-radius:18px;
       padding:22px;
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:160px;
+      min-height:175px;
       cursor:pointer;
       transform:translateY(0);
       transition:
@@ -72,8 +109,8 @@
         box-shadow .14s ease,
         filter .14s ease;
       box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.02),
-        0 10px 24px rgba(0,0,0,.18);
+        inset 0 0 0 1px rgba(255,255,255,.75),
+        0 10px 24px rgba(0,80,180,.10);
     }
 
     .appCard::before{
@@ -83,8 +120,8 @@
       border-radius:18px;
       background:
         radial-gradient(600px circle at var(--mx,50%) var(--my,30%),
-          rgba(43,124,255,.22),
-          rgba(43,124,255,.10) 18%,
+          rgba(0,109,255,.20),
+          rgba(0,109,255,.08) 18%,
           transparent 45%);
       opacity:0;
       transition:opacity .14s ease;
@@ -92,16 +129,18 @@
     }
 
     .appCard:hover{
-      transform:translateY(-2px);
-      background:rgba(28,42,58,.55);
-      border-color:rgba(43,124,255,.45);
+      transform:translateY(-3px);
+      background:var(--cardHover);
+      border-color:rgba(0,109,255,.55);
       box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.02),
-        0 18px 40px rgba(0,0,0,.35);
-      filter:brightness(1.06);
+        inset 0 0 0 1px rgba(255,255,255,.85),
+        0 20px 44px rgba(0,80,180,.18);
+      filter:brightness(1.02);
     }
 
-    .appCard:hover::before{opacity:1;}
+    .appCard:hover::before{
+      opacity:1;
+    }
 
     .cardLink{
       position:absolute;
@@ -122,14 +161,16 @@
 
     .appTitle{
       font-size:30px;
-      font-weight:900;
+      font-weight:1000;
       margin:0;
+      color:var(--deepBlue);
     }
 
     .appDesc{
       margin:0;
-      color:rgba(207,225,255,.85);
+      color:var(--blueText);
       font-size:14px;
+      font-weight:800;
     }
 
     .btnRow{
@@ -147,7 +188,7 @@
       padding:12px 18px;
       border-radius:14px;
       text-decoration:none;
-      font-weight:900;
+      font-weight:1000;
       user-select:none;
       cursor:pointer;
       min-width:120px;
@@ -158,27 +199,94 @@
       z-index:3;
     }
 
-    a.btn:active{transform:scale(.99)}
+    a.btn:active{
+      transform:scale(.99);
+    }
 
     .primary{
-      color:#08121f;
-      background:linear-gradient(180deg, rgba(43,124,255,1), rgba(30,92,205,1));
+      color:#ffffff;
+      background:linear-gradient(180deg, #0077ff, #004fc7);
       box-shadow:
-        0 10px 20px rgba(43,124,255,.18),
-        inset 0 0 0 1px rgba(255,255,255,.10);
+        0 10px 20px rgba(0,109,255,.22),
+        inset 0 0 0 1px rgba(255,255,255,.18);
     }
 
     .primary:hover{
       filter:brightness(1.10);
       box-shadow:
-        0 16px 30px rgba(43,124,255,.26),
-        0 0 0 3px rgba(43,124,255,.18),
-        inset 0 0 0 1px rgba(255,255,255,.16);
+        0 16px 30px rgba(0,109,255,.30),
+        0 0 0 3px rgba(0,109,255,.16),
+        inset 0 0 0 1px rgba(255,255,255,.24);
     }
 
     a.btn:focus-visible{
-      outline:2px solid rgba(43,124,255,.85);
+      outline:2px solid rgba(0,109,255,.85);
       outline-offset:3px;
+    }
+
+    /* ===== ETIQUETA NUEVA ACTUALIZACIÓN PARA ESTRUCTURA ===== */
+    .updateTag{
+      width:max-content;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:8px 13px;
+      border-radius:999px;
+      color:#ffffff;
+      background:linear-gradient(90deg, var(--new), var(--new2), var(--new));
+      background-size:240% 100%;
+      border:1px solid rgba(255,255,255,.70);
+      font-size:12px;
+      font-weight:1000;
+      letter-spacing:.8px;
+      box-shadow:
+        0 0 20px rgba(0,109,255,.35),
+        0 8px 18px rgba(0,80,180,.18);
+      animation:updateMove 1.35s linear infinite, updatePop .9s ease-in-out infinite;
+    }
+
+    .updateTag::before{
+      content:"✨";
+    }
+
+    @keyframes updateMove{
+      0%{background-position:0% 50%}
+      100%{background-position:240% 50%}
+    }
+
+    @keyframes updatePop{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.05)}
+    }
+
+    .estructuraCard{
+      border-color:rgba(0,109,255,.45);
+      background:
+        linear-gradient(135deg, rgba(0,109,255,.10), rgba(255,255,255,.90)),
+        var(--card);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.85),
+        0 0 30px rgba(0,109,255,.16);
+    }
+
+    .estructuraCard::after{
+      content:"";
+      position:absolute;
+      top:-70%;
+      left:-45%;
+      width:45%;
+      height:250%;
+      background:linear-gradient(90deg, transparent, rgba(0,109,255,.16), transparent);
+      transform:rotate(18deg);
+      animation:shineStructure 3s infinite;
+      pointer-events:none;
+    }
+
+    @keyframes shineStructure{
+      0%{transform:translateX(-140%) rotate(18deg)}
+      60%{transform:translateX(430%) rotate(18deg)}
+      100%{transform:translateX(430%) rotate(18deg)}
     }
 
     /* ===== ZONA VERSION GRATUITA ===== */
@@ -202,16 +310,16 @@
       padding:0 28px;
       border-radius:22px;
       text-decoration:none;
-      font-weight:900;
+      font-weight:1000;
       font-size:1.18rem;
       letter-spacing:.6px;
       color:#ffffff;
-      background:linear-gradient(180deg, rgba(21,40,66,.96), rgba(10,20,34,.96));
-      border:1px solid rgba(68,145,255,.45);
+      background:linear-gradient(180deg, #0077ff, #004fc7);
+      border:1px solid rgba(0,109,255,.45);
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.03) inset,
-        0 0 18px rgba(43,124,255,.18),
-        0 12px 28px rgba(0,0,0,.30);
+        0 0 0 1px rgba(255,255,255,.35) inset,
+        0 0 24px rgba(0,109,255,.22),
+        0 14px 30px rgba(0,80,180,.18);
       transition:
         transform .16s ease,
         filter .16s ease,
@@ -231,7 +339,7 @@
         90deg,
         transparent 0%,
         rgba(255,255,255,.05) 20%,
-        rgba(255,255,255,.45) 50%,
+        rgba(255,255,255,.48) 50%,
         rgba(255,255,255,.08) 80%,
         transparent 100%
       );
@@ -244,18 +352,18 @@
       position:absolute;
       inset:-1px;
       border-radius:22px;
-      background:radial-gradient(circle at 50% 0%, rgba(70,170,255,.22), transparent 55%);
+      background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.22), transparent 55%);
       pointer-events:none;
     }
 
     .free-version-btn:hover{
       transform:translateY(-3px) scale(1.02);
       filter:brightness(1.08);
-      border-color:rgba(100,180,255,.75);
+      border-color:rgba(0,109,255,.75);
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.05) inset,
-        0 0 24px rgba(43,124,255,.28),
-        0 18px 38px rgba(0,0,0,.38);
+        0 0 0 1px rgba(255,255,255,.45) inset,
+        0 0 28px rgba(0,109,255,.30),
+        0 18px 38px rgba(0,80,180,.20);
     }
 
     .free-version-btn:active{
@@ -265,7 +373,7 @@
     .free-version-btn span{
       position:relative;
       z-index:2;
-      text-shadow:0 0 10px rgba(120,190,255,.18);
+      text-shadow:0 0 10px rgba(255,255,255,.20);
     }
 
     .free-info{
@@ -274,45 +382,47 @@
       width:100%;
       padding:18px 22px;
       border-radius:18px;
-      background:linear-gradient(180deg, rgba(13,22,35,.92), rgba(9,16,27,.86));
-      border:1px solid rgba(43,124,255,.18);
+      background:#ffffff;
+      border:1px solid rgba(0,109,255,.22);
       box-shadow:
-        0 12px 26px rgba(0,0,0,.24),
-        inset 0 0 0 1px rgba(255,255,255,.02);
+        0 12px 26px rgba(0,80,180,.10),
+        inset 0 0 0 1px rgba(255,255,255,.75);
     }
 
     .free-title{
       margin:0 0 14px;
       font-size:1.12rem;
-      font-weight:900;
+      font-weight:1000;
       letter-spacing:.4px;
-      color:#ffffff;
+      color:var(--deepBlue);
     }
 
     .free-line{
       margin:6px 0;
       font-size:1rem;
-      color:#dce9ff;
+      color:var(--blueText);
       line-height:1.55;
+      font-weight:800;
     }
 
     .free-label{
-      color:#ffffff;
-      font-weight:800;
+      color:var(--deepBlue);
+      font-weight:1000;
     }
 
     .free-blue{
       color:var(--blueText);
-      font-weight:900;
+      font-weight:1000;
     }
 
     .free-note{
       margin-top:16px;
       padding-top:14px;
-      border-top:1px solid rgba(255,255,255,.08);
+      border-top:1px solid rgba(0,109,255,.14);
       font-size:.88rem;
       line-height:1.55;
-      color:#aecaef;
+      color:var(--muted);
+      font-weight:800;
     }
 
     @keyframes shine{
@@ -328,17 +438,33 @@
       align-items:center;
       color:var(--muted);
       font-size:13px;
+      font-weight:800;
     }
 
-    .dot{opacity:.6}
-    .vis b{color:#eaf0ff}
+    .dot{
+      opacity:.6;
+    }
+
+    .vis b{
+      color:var(--deepBlue);
+      font-weight:1000;
+    }
 
     @media (max-width:900px){
-      h1{font-size:38px}
-      .cards{grid-template-columns:1fr}
+      h1{
+        font-size:38px;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
     }
 
     @media (max-width:640px){
+      .wrap{
+        padding:20px;
+      }
+
       .free-version-btn{
         width:100%;
         min-width:0;
@@ -358,9 +484,9 @@
 <body>
   <div class="wrap">
     <div class="shell">
-      <span class="badge">Revit 2023/2024/2025/2026 • Windows</span>
+      <span class="badge">Revit 2023/2024/2025/2026/2027 • Windows</span>
       <h1>Conjunto</h1>
-      <p>Elige qué paquete quieres abrir. (Dos puertas: una te da arquitectura… la otra también, pero con fierros 😄)</p>
+      <p>Elige qué paquete quieres abrir. Dos puertas: una te da arquitectura… la otra también, pero con fierros 😄</p>
 
       <div class="cards">
         <!-- ARQUITECTURA -->
@@ -378,12 +504,14 @@
         </div>
 
         <!-- ESTRUCTURA -->
-        <div class="appCard" data-tilt>
+        <div class="appCard estructuraCard" data-tilt>
           <a class="cardLink" href="estructura.html" aria-label="Abrir Conjunto Estructura"></a>
 
           <div class="cardContent">
+            <span class="updateTag">NUEVA ACTUALIZACIÓN</span>
+
             <div class="appTitle">2) Conjunto Estructura</div>
-            <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural.</p>
+            <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural. Compatible con nueva versión 2027.</p>
 
             <div class="btnRow">
               <a class="btn primary" href="estructura.html">Abrir</a>
@@ -395,7 +523,7 @@
       <div class="foot">
         <span>© <span id="y"></span> Conjunto</span>
         <span class="dot">•</span>
-        <span class="vis">Si deseas la versión de prueba comparte la pagina web, comparte un video de tiktok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días (con evidencia): <b id="visitas">—</b></span>
+        <span class="vis">Si deseas la versión de prueba comparte la página web, comparte un video de TikTok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días con evidencia: <b id="visitas">—</b></span>
       </div>
     </div>
 
@@ -407,7 +535,7 @@
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Solicitar versión gratuita por WhatsApp">    
-        <span>VERSION GRATUITA - ACEROS - CLIP PARA SOLICITAR</span>
+        <span>VERSIÓN GRATUITA - ACEROS - CLIC PARA SOLICITAR</span>
       </a>
     
       <div class="free-info">
@@ -429,7 +557,7 @@
         </div>
     
         <div class="free-note">
-          para ampliar tu prueba solo comparte un video de tiktok a una de tus redes, envíame foto dale like y te agrego más días
+          Para ampliar tu prueba solo comparte un video de TikTok a una de tus redes, envíame foto, dale like y te agrego más días.
         </div>
       </div>
     </div>
