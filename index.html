@@ -7,10 +7,10 @@
 
   <style>
     :root{
-      --bg:#ffffff;
+      --bg:#e4e7eb;
       --shell:#ffffff;
-      --card:#f5f9ff;
-      --cardHover:#eaf3ff;
+      --card:#f7f9fc;
+      --cardHover:#eef4ff;
       --border:rgba(0,80,180,.22);
       --muted:#245f9f;
       --txt:#004a99;
@@ -31,12 +31,14 @@
     body{
       font-family:system-ui,Segoe UI,Roboto,Arial;
       margin:0;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(0,109,255,.12), transparent 32%),
-        radial-gradient(circle at 90% 10%, rgba(0,166,255,.10), transparent 34%),
-        var(--bg);
       color:var(--txt);
       font-weight:700;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.70), transparent 28%),
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.35), transparent 20%),
+        radial-gradient(circle at 85% 18%, rgba(255,255,255,.28), transparent 20%),
+        linear-gradient(180deg, #dfe4e8 0%, #eef1f4 18%, #e2e6ea 42%, #f1f3f5 70%, #dde2e7 100%);
+      background-attachment: fixed;
     }
 
     .wrap{
@@ -46,13 +48,15 @@
     }
 
     .shell{
-      background:rgba(255,255,255,.96);
-      border:1px solid var(--border);
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(0,80,180,.16);
       border-radius:22px;
       padding:26px;
       box-shadow:
-        0 18px 42px rgba(0,80,180,.12),
-        inset 0 0 0 1px rgba(255,255,255,.70);
+        0 20px 45px rgba(120,130,145,.20),
+        0 6px 12px rgba(255,255,255,.55) inset,
+        inset 0 0 0 1px rgba(255,255,255,.72);
+      backdrop-filter: blur(2px);
     }
 
     .badge{
@@ -99,7 +103,7 @@
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:175px;
+      min-height:190px;
       cursor:pointer;
       transform:translateY(0);
       transition:
@@ -224,40 +228,74 @@
       outline-offset:3px;
     }
 
-    /* ===== ETIQUETA NUEVA ACTUALIZACIÓN PARA ESTRUCTURA ===== */
+    /* ===== ETIQUETA GRANDE NUEVA ACTUALIZACIÓN ===== */
     .updateTag{
       width:max-content;
-      display:inline-flex;
-      align-items:center;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
       justify-content:center;
-      gap:7px;
-      padding:8px 13px;
-      border-radius:999px;
+      gap:4px;
+      padding:12px 20px;
+      border-radius:18px;
       color:#ffffff;
-      background:linear-gradient(90deg, var(--new), var(--new2), var(--new));
-      background-size:240% 100%;
-      border:1px solid rgba(255,255,255,.70);
-      font-size:12px;
+      background:linear-gradient(90deg, var(--new), var(--new2), var(--new), var(--new2));
+      background-size:250% 100%;
+      border:1px solid rgba(255,255,255,.75);
       font-weight:1000;
-      letter-spacing:.8px;
+      letter-spacing:.9px;
       box-shadow:
-        0 0 20px rgba(0,109,255,.35),
-        0 8px 18px rgba(0,80,180,.18);
-      animation:updateMove 1.35s linear infinite, updatePop .9s ease-in-out infinite;
+        0 0 22px rgba(0,109,255,.35),
+        0 10px 22px rgba(0,80,180,.20);
+      animation:
+        updateMove 1.2s linear infinite,
+        blinkPulse 1s ease-in-out infinite;
     }
 
-    .updateTag::before{
+    .updateTop{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:16px;
+      line-height:1.1;
+      text-transform:uppercase;
+    }
+
+    .updateTop::before{
       content:"✨";
+      font-size:18px;
+    }
+
+    .updateDate{
+      font-size:13px;
+      line-height:1;
+      font-weight:900;
+      opacity:.96;
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+      padding:4px 10px;
     }
 
     @keyframes updateMove{
       0%{background-position:0% 50%}
-      100%{background-position:240% 50%}
+      100%{background-position:250% 50%}
     }
 
-    @keyframes updatePop{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.05)}
+    @keyframes blinkPulse{
+      0%, 100%{
+        transform:scale(1);
+        filter:brightness(1);
+        box-shadow:
+          0 0 18px rgba(0,109,255,.28),
+          0 10px 22px rgba(0,80,180,.18);
+      }
+      50%{
+        transform:scale(1.05);
+        filter:brightness(1.28);
+        box-shadow:
+          0 0 32px rgba(0,109,255,.52),
+          0 10px 28px rgba(0,80,180,.25);
+      }
     }
 
     .estructuraCard{
@@ -477,6 +515,16 @@
       .free-line{
         font-size:.95rem;
       }
+
+      .updateTag{
+        width:100%;
+        align-items:center;
+      }
+
+      .updateTop,
+      .updateDate{
+        text-align:center;
+      }
     }
   </style>
 </head>
@@ -508,7 +556,10 @@
           <a class="cardLink" href="estructura.html" aria-label="Abrir Conjunto Estructura"></a>
 
           <div class="cardContent">
-            <span class="updateTag">NUEVA ACTUALIZACIÓN</span>
+            <div class="updateTag">
+              <div class="updateTop">NUEVA ACTUALIZACIÓN</div>
+              <div class="updateDate">29/04/2026</div>
+            </div>
 
             <div class="appTitle">2) Conjunto Estructura</div>
             <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural. Compatible con nueva versión 2027.</p>
