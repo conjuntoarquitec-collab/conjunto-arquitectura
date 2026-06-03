@@ -7,8 +7,11 @@
 
   <style>
     :root{
-      --bg:#e4e7eb;
-      --shell:#ffffff;
+      --bg:#0c1320;
+      --bg2:#111b2d;
+      --bg3:#1a2638;
+
+      --shell:rgba(255,255,255,.92);
       --card:#f7f9fc;
       --cardHover:#eef4ff;
       --border:rgba(0,80,180,.22);
@@ -34,10 +37,10 @@
       color:var(--txt);
       font-weight:700;
       background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.40), transparent 30%),
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,.18), transparent 18%),
-        radial-gradient(circle at 88% 18%, rgba(255,255,255,.16), transparent 18%),
-        linear-gradient(180deg, #c9cfd6 0%, #d5dbe1 20%, #c8ced5 45%, #d8dde2 72%, #c3c9d0 100%);
+        radial-gradient(circle at 50% 0%, rgba(70,120,255,.16), transparent 22%),
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,.05), transparent 18%),
+        radial-gradient(circle at 88% 18%, rgba(255,255,255,.04), transparent 18%),
+        linear-gradient(180deg, #0b1220 0%, #10192b 22%, #132033 45%, #16253a 72%, #0e1625 100%);
       background-attachment: fixed;
     }
 
@@ -48,15 +51,15 @@
     }
 
     .shell{
-      background:rgba(255,255,255,.94);
-      border:1px solid rgba(0,80,180,.16);
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(120,170,255,.18);
       border-radius:22px;
       padding:26px;
       box-shadow:
-        0 20px 45px rgba(120,130,145,.20),
-        0 6px 12px rgba(255,255,255,.55) inset,
-        inset 0 0 0 1px rgba(255,255,255,.72);
-      backdrop-filter: blur(2px);
+        0 24px 52px rgba(0,0,0,.28),
+        0 6px 12px rgba(255,255,255,.45) inset,
+        inset 0 0 0 1px rgba(255,255,255,.65);
+      backdrop-filter: blur(3px);
     }
 
     .badge{
@@ -228,7 +231,7 @@
       outline-offset:3px;
     }
 
-    /* ===== ETIQUETA GRANDE NUEVA ACTUALIZACIÓN ===== */
+    /* ===== ETIQUETA ESTRUCTURA ===== */
     .updateTag{
       width:max-content;
       display:flex;
@@ -274,6 +277,7 @@
       background:rgba(255,255,255,.18);
       border-radius:999px;
       padding:4px 10px;
+      color:white;
     }
 
     @keyframes updateMove{
@@ -329,13 +333,13 @@
 
     /* ===== AVISO ROJO ARQUITECTURA ===== */
     .arquitecturaCard{
-      border-color:rgba(255,30,60,.55);
+      border-color:rgba(255,30,60,.60);
       background:
-        linear-gradient(135deg, rgba(255,30,60,.12), rgba(255,255,255,.92)),
+        linear-gradient(135deg, rgba(255,30,60,.10), rgba(255,255,255,.94)),
         var(--card);
       box-shadow:
         inset 0 0 0 1px rgba(255,255,255,.85),
-        0 0 30px rgba(255,30,60,.20);
+        0 0 32px rgba(255,30,60,.18);
     }
 
     .arquitecturaCard::after{
@@ -345,7 +349,7 @@
       left:-45%;
       width:45%;
       height:250%;
-      background:linear-gradient(90deg, transparent, rgba(255,30,60,.22), transparent);
+      background:linear-gradient(90deg, transparent, rgba(255,30,60,.18), transparent);
       transform:rotate(18deg);
       animation:shineArquitectura 3s infinite;
       pointer-events:none;
@@ -358,26 +362,39 @@
     }
 
     .updateTagRed{
-      width:max-content;
-      display:flex;
+      display:inline-flex;
       flex-direction:column;
       align-items:flex-start;
       justify-content:center;
       gap:4px;
-      padding:12px 20px;
-      border-radius:18px;
+      width:max-content;
+      min-width:300px;
+      padding:14px 24px;
+      border-radius:20px;
       color:#ffffff;
-      background:linear-gradient(90deg, #ff1744, #ff7a18, #ff1744, #ff7a18);
-      background-size:250% 100%;
-      border:1px solid rgba(255,255,255,.80);
+      background:linear-gradient(90deg, #ff1744, #ff5a36, #ff1744, #ff7a18);
+      background-size:260% 100%;
+      border:1px solid rgba(255,255,255,.85);
       font-weight:1000;
       letter-spacing:.9px;
       box-shadow:
-        0 0 26px rgba(255,30,60,.42),
-        0 10px 24px rgba(180,0,30,.22);
+        0 0 26px rgba(255,30,60,.48),
+        0 12px 24px rgba(180,0,30,.24);
       animation:
-        updateMove 1.2s linear infinite,
+        updateMoveRed 1.2s linear infinite,
         blinkPulseRed 1s ease-in-out infinite;
+      margin-bottom:8px;
+    }
+
+    .updateTagRed .updateTop{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:16px;
+      line-height:1.1;
+      text-transform:uppercase;
+      color:#ffffff;
+      font-weight:1000;
     }
 
     .updateTagRed .updateTop::before{
@@ -385,25 +402,41 @@
       font-size:18px;
     }
 
+    .updateTagRed .updateDate{
+      font-size:13px;
+      line-height:1;
+      font-weight:900;
+      opacity:.98;
+      background:rgba(255,255,255,.22);
+      border-radius:999px;
+      padding:5px 12px;
+      color:#ffffff;
+    }
+
+    @keyframes updateMoveRed{
+      0%{background-position:0% 50%}
+      100%{background-position:260% 50%}
+    }
+
     @keyframes blinkPulseRed{
-      0%, 100%{
+      0%,100%{
         transform:scale(1);
         filter:brightness(1);
         box-shadow:
-          0 0 20px rgba(255,30,60,.30),
+          0 0 20px rgba(255,30,60,.34),
           0 10px 22px rgba(180,0,30,.18);
       }
       50%{
         transform:scale(1.05);
-        filter:brightness(1.28);
+        filter:brightness(1.24);
         box-shadow:
-          0 0 36px rgba(255,30,60,.60),
-          0 10px 30px rgba(180,0,30,.26);
+          0 0 38px rgba(255,30,60,.65),
+          0 12px 30px rgba(180,0,30,.30);
       }
     }
 
-    /* ===== ZONA VERSION GRATUITA ===== */
-    .free-zone{
+    /* ===== ZONA IA / PROXIMAMENTE ===== */
+    .ia-zone{
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -412,27 +445,28 @@
       text-align:center;
     }
 
-    .free-version-btn{
+    .ia-banner{
       position:relative;
       overflow:hidden;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-width:320px;
-      min-height:84px;
-      padding:0 28px;
-      border-radius:22px;
+      gap:12px;
+      min-width:420px;
+      min-height:86px;
+      padding:0 30px;
+      border-radius:24px;
       text-decoration:none;
       font-weight:1000;
-      font-size:1.18rem;
-      letter-spacing:.6px;
+      font-size:1.16rem;
+      letter-spacing:.5px;
       color:#ffffff;
       background:linear-gradient(180deg, #0077ff, #004fc7);
       border:1px solid rgba(0,109,255,.45);
       box-shadow:
-        0 0 0 1px rgba(255,255,255,.35) inset,
-        0 0 24px rgba(0,109,255,.22),
-        0 14px 30px rgba(0,80,180,.18);
+        0 0 0 1px rgba(255,255,255,.32) inset,
+        0 0 26px rgba(0,109,255,.24),
+        0 16px 34px rgba(0,80,180,.22);
       transition:
         transform .16s ease,
         filter .16s ease,
@@ -440,7 +474,7 @@
         box-shadow .16s ease;
     }
 
-    .free-version-btn::before{
+    .ia-banner::before{
       content:"";
       position:absolute;
       top:0;
@@ -460,80 +494,144 @@
       pointer-events:none;
     }
 
-    .free-version-btn::after{
+    .ia-banner::after{
       content:"";
       position:absolute;
       inset:-1px;
-      border-radius:22px;
+      border-radius:24px;
       background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.22), transparent 55%);
       pointer-events:none;
     }
 
-    .free-version-btn:hover{
+    .ia-banner:hover{
       transform:translateY(-3px) scale(1.02);
       filter:brightness(1.08);
       border-color:rgba(0,109,255,.75);
       box-shadow:
         0 0 0 1px rgba(255,255,255,.45) inset,
-        0 0 28px rgba(0,109,255,.30),
-        0 18px 38px rgba(0,80,180,.20);
+        0 0 30px rgba(0,109,255,.32),
+        0 18px 38px rgba(0,80,180,.24);
     }
 
-    .free-version-btn:active{
-      transform:scale(.985);
-    }
-
-    .free-version-btn span{
+    .ia-banner span{
       position:relative;
       z-index:2;
-      text-shadow:0 0 10px rgba(255,255,255,.20);
+      text-shadow:0 0 10px rgba(255,255,255,.18);
     }
 
-    .free-info{
-      margin-top:18px;
-      max-width:760px;
+    .brainIcon{
+      position:relative;
+      z-index:2;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.10));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:
+        0 0 16px rgba(255,255,255,.18),
+        inset 0 0 0 1px rgba(255,255,255,.10);
+      font-size:24px;
+    }
+
+    .ia-card{
+      margin-top:22px;
+      max-width:860px;
       width:100%;
-      padding:18px 22px;
-      border-radius:18px;
-      background:#ffffff;
+      padding:24px 28px;
+      border-radius:22px;
+      background:rgba(255,255,255,.95);
       border:1px solid rgba(0,109,255,.22);
       box-shadow:
-        0 12px 26px rgba(0,80,180,.10),
+        0 16px 32px rgba(0,80,180,.12),
+        inset 0 0 0 1px rgba(255,255,255,.75);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .ia-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(0,140,255,.08), transparent 25%),
+        radial-gradient(circle at 85% 12%, rgba(90,0,255,.07), transparent 24%),
+        linear-gradient(135deg, rgba(0,109,255,.04), transparent 55%);
+      pointer-events:none;
+    }
+
+    .ia-head{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .brainBig{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:38px;
+      background:linear-gradient(180deg, #eef6ff, #dbe9ff);
+      border:2px solid rgba(0,109,255,.20);
+      box-shadow:
+        0 8px 18px rgba(0,109,255,.12),
         inset 0 0 0 1px rgba(255,255,255,.75);
     }
 
-    .free-title{
-      margin:0 0 14px;
-      font-size:1.12rem;
+    .ia-title{
+      position:relative;
+      z-index:2;
+      margin:0;
+      font-size:2rem;
       font-weight:1000;
       letter-spacing:.4px;
       color:var(--deepBlue);
     }
 
-    .free-line{
-      margin:6px 0;
-      font-size:1rem;
-      color:var(--blueText);
+    .ia-subtitle{
+      position:relative;
+      z-index:2;
+      margin:10px 0 0;
+      font-size:1.08rem;
       line-height:1.55;
-      font-weight:800;
-    }
-
-    .free-label{
-      color:var(--deepBlue);
-      font-weight:1000;
-    }
-
-    .free-blue{
       color:var(--blueText);
-      font-weight:1000;
+      font-weight:900;
     }
 
-    .free-note{
-      margin-top:16px;
-      padding-top:14px;
+    .ia-highlight{
+      position:relative;
+      z-index:2;
+      display:inline-block;
+      margin-top:18px;
+      padding:10px 20px;
+      border-radius:999px;
+      background:linear-gradient(90deg, #0d71ff, #5b3dff);
+      color:#ffffff;
+      font-weight:1000;
+      letter-spacing:1.1px;
+      box-shadow:
+        0 8px 18px rgba(0,109,255,.20),
+        0 0 16px rgba(91,61,255,.18);
+    }
+
+    .ia-note{
+      position:relative;
+      z-index:2;
+      margin-top:18px;
+      padding-top:16px;
       border-top:1px solid rgba(0,109,255,.14);
-      font-size:.88rem;
-      line-height:1.55;
+      font-size:.95rem;
+      line-height:1.6;
       color:var(--muted);
       font-weight:800;
     }
@@ -578,22 +676,24 @@
         padding:20px;
       }
 
-      .free-version-btn{
+      .ia-banner{
         width:100%;
         min-width:0;
+        padding:18px;
       }
 
-      .free-info{
-        padding:16px;
+      .ia-card{
+        padding:18px;
       }
 
-      .free-line{
-        font-size:.95rem;
+      .ia-title{
+        font-size:1.55rem;
       }
 
       .updateTag,
       .updateTagRed{
         width:100%;
+        min-width:0;
         align-items:center;
       }
 
@@ -659,37 +759,33 @@
       </div>
     </div>
 
-    <!-- VERSION GRATUITA -->
-    <div class="free-zone">
-      <a
-        class="free-version-btn"
-        href="https://api.whatsapp.com/send/?phone=51966848416&text=QUIERO%20SOLICITAR%20MI%20VERSION%20DE%20PRUEBA.%20ACA%20TE%20ENVIO%20LA%20FOTO%20QUE%20COMPARTI%20EL%20VIDEO&type=phone_number&app_absent=0"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Solicitar versión gratuita por WhatsApp">    
-        <span>VERSIÓN GRATUITA - ACEROS - CLIC PARA SOLICITAR</span>
+    <!-- ZONA IA / PROXIMAMENTE -->
+    <div class="ia-zone" id="ia-proximamente">
+      <a class="ia-banner" href="#ia-proximamente">
+        <span class="brainIcon">🧠</span>
+        <span>AUTOMATIZACIONES CON IA · PRÓXIMAMENTE</span>
       </a>
-    
-      <div class="free-info">
-        <div class="free-title">CÓDIGO DE ACTIVACIÓN GRATIS PARA LA APP DE ACEROS</div>
-    
-        <div class="free-line">
-          <span class="free-label">código:</span>
-          <span class="free-blue">CA-XXXX-XXXX-XXXX-XXXX-XXXX</span>
+
+      <div class="ia-card">
+        <div class="ia-head">
+          <div class="brainBig">🧠</div>
+          <h2 class="ia-title">AUTOMATIZACIONES CON IA</h2>
         </div>
-    
-        <div class="free-line">
-          <span class="free-label">correo:</span>
-          <span class="free-blue">conjuntoarquitec@gmail.com</span>
-        </div>
-    
-        <div class="free-line">
-          <span class="free-label">fecha:</span>
-          <span>25/03/2026 al xx/xx/2026</span>
-        </div>
-    
-        <div class="free-note">
-          Para ampliar tu prueba solo comparte un video de TikTok a una de tus redes, envíame foto, dale like y te agrego más días.
+
+        <p class="ia-subtitle">
+          Nuevo rumbo al trabajo colaborativo y gestión de datos.
+        </p>
+
+        <p class="ia-subtitle">
+          Estamos preparando nuevas herramientas enfocadas en automatización inteligente,
+          asistencia al modelado, organización de información y flujos más ágiles para BIM.
+        </p>
+
+        <div class="ia-highlight">PRÓXIMAMENTE...</div>
+
+        <div class="ia-note">
+          Muy pronto esta sección mostrará nuevas funciones orientadas a productividad,
+          coordinación y análisis con apoyo de IA.
         </div>
       </div>
     </div>
