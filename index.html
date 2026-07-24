@@ -671,6 +671,12 @@
       font-weight:1000;
     }
 
+    .visitas-publicas{
+      flex-basis:100%;
+      text-align:right;
+      font-size:12px;
+    }
+
     @media (max-width:900px){
       h1{
         font-size:38px;
@@ -765,7 +771,8 @@
       <div class="foot">
         <span>© <span id="y"></span> Conjunto</span>
         <span class="dot">•</span>
-        <span class="vis">Si deseas la versión de prueba comparte la página web, comparte un video de TikTok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días con evidencia: <b id="visitas">—</b></span>
+        <span class="vis">Si deseas la versión de prueba comparte la página web, comparte un video de TikTok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días con evidencia.</span>
+        <span class="vis visitas-publicas">Visitas a esta portada: <b id="visitas">—</b></span>
       </div>
     </div>
 
@@ -821,39 +828,36 @@
       }
     })();
 
-    // Contador global
-    const NAMESPACE = "conjuntoarquitec-collab";
-    const KEY = "conjunto-index-visitas";
-    const COUNT_EVERY_LOAD = true;
-
+    // Contador público: suma una visita por navegador cada día.
+    const COUNTER_ENDPOINT = "https://conjuntoiabim-contador.conjuntoarquitec.workers.dev/";
     const el = document.getElementById("visitas");
     const today = new Date().toISOString().slice(0,10);
-    const localFlag = `counted:${NAMESPACE}:${KEY}:${today}`;
+    const localFlag = `counted:conjuntoiabim:portada:${today}`;
 
-    async function fetchJSON(url){
-      const r = await fetch(url, { cache: "no-store" });
-      if(!r.ok) throw new Error("HTTP " + r.status);
-      return await r.json();
-    }
-
-    
     async function updateCounter(){
+      let countedToday = false;
       try{
-        const ns = encodeURIComponent(NAMESPACE);
-        const key = encodeURIComponent(KEY);
+        countedToday = localStorage.getItem(localFlag) === "1";
+      }catch(err){}
 
-        if(!COUNT_EVERY_LOAD && localStorage.getItem(localFlag) === "1"){
-          const data = await fetchJSON(`https://api.countapi.xyz/get/${ns}/${key}`);
-          el.textContent = (data && typeof data.value === "number") ? data.value : "—";
-          return;
+      try{
+        const r = await fetch(COUNTER_ENDPOINT, {
+          method: countedToday ? "GET" : "POST",
+          cache: "no-store"
+        });
+        if(!r.ok) throw new Error("HTTP " + r.status);
+
+        const data = await r.json();
+        if(!data || typeof data.count !== "number"){
+          throw new Error("Respuesta inválida");
         }
 
-        const data = await fetchJSON(`https://api.countapi.xyz/hit/${ns}/${key}`);
-        if (data && typeof data.value === "number"){
-          el.textContent = data.value;
-          if(!COUNT_EVERY_LOAD) localStorage.setItem(localFlag, "1");
-        } else {
-          el.textContent = "—";
+        el.textContent = new Intl.NumberFormat("es-PE").format(data.count);
+
+        if(!countedToday){
+          try{
+            localStorage.setItem(localFlag, "1");
+          }catch(err){}
         }
       }catch(err){
         el.textContent = "—";
