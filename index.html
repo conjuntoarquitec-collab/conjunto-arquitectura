@@ -1,870 +1,577 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Conjunto IA BIM | Apps y herramientas para Revit</title>
-  <meta name="description" content="Aplicaciones y herramientas BIM para Autodesk Revit 2023, 2024, 2025, 2026 y 2027. Descargas y soporte de Conjunto IA BIM." />
+  <title>Conjunto IA BIM | BIM + IA y aplicaciones Revit</title>
+  <meta name="description" content="BIM + IA, asistentes virtuales y autonomos, cursos en preparacion y descargas de aplicaciones Revit de Conjunto IA BIM." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.conjuntoiabim.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_PE" />
-  <meta property="og:title" content="Conjunto IA BIM | Apps y herramientas para Revit" />
-  <meta property="og:description" content="Aplicaciones BIM para Revit, automatización, descargas y soporte especializado." />
+  <meta property="og:title" content="Conjunto IA BIM | BIM + IA" />
+  <meta property="og:description" content="Crea asistentes virtuales para BIM y descarga las aplicaciones Revit de Conjunto IA BIM." />
   <meta property="og:url" content="https://www.conjuntoiabim.com/" />
-  <meta property="og:image" content="https://www.conjuntoiabim.com/assets/img/APP.JPG" />
+  <meta property="og:image" content="https://www.conjuntoiabim.com/assets/img/hero-robot-bim-ia.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     :root{
-      --bg:#0c1320;
-      --bg2:#111b2d;
-      --bg3:#1a2638;
-
-      --shell:rgba(255,255,255,.92);
-      --card:#f7f9fc;
-      --cardHover:#eef4ff;
-      --border:rgba(0,80,180,.22);
-      --muted:#245f9f;
-      --txt:#004a99;
-
-      --accent:#006dff;
-      --accent2:rgba(0,109,255,.45);
-      --blueText:#005ecb;
-      --deepBlue:#003f8f;
-      --lightBlue:#eaf3ff;
-      --new:#00a6ff;
-      --new2:#004cff;
+      --bg:#07111f;
+      --blue:#006dff;
+      --cyan:#55e6ff;
+      --ink:#06295f;
+      --muted:#52739c;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
-      font-family:system-ui,Segoe UI,Roboto,Arial;
       margin:0;
-      color:var(--txt);
-      font-weight:700;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(70,120,255,.16), transparent 22%),
-        radial-gradient(circle at 12% 18%, rgba(255,255,255,.05), transparent 18%),
-        radial-gradient(circle at 88% 18%, rgba(255,255,255,.04), transparent 18%),
-        linear-gradient(180deg, #0b1220 0%, #10192b 22%, #132033 45%, #16253a 72%, #0e1625 100%);
-      background-attachment: fixed;
+      min-height:100vh;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+      color:white;
+      background:var(--bg);
     }
 
-    .wrap{
-      max-width:1080px;
-      margin:auto;
-      padding:34px;
-    }
+    a{color:inherit}
+    button,input{font:inherit}
 
-    .shell{
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(120,170,255,.18);
-      border-radius:22px;
-      padding:26px;
-      box-shadow:
-        0 24px 52px rgba(0,0,0,.28),
-        0 6px 12px rgba(255,255,255,.45) inset,
-        inset 0 0 0 1px rgba(255,255,255,.65);
-      backdrop-filter: blur(3px);
-    }
-
-    .badge{
-      display:inline-block;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#eaf3ff;
-      border:1px solid rgba(0,109,255,.25);
-      font-size:12px;
-      color:var(--deepBlue);
-      font-weight:900;
-      letter-spacing:.2px;
-    }
-
-    h1{
-      margin:10px 0 6px;
-      font-size:46px;
-      letter-spacing:.2px;
-      color:var(--deepBlue);
-      font-weight:1000;
-    }
-
-    p{
-      line-height:1.55;
-      color:var(--blueText);
-      margin:8px 0;
-      font-weight:800;
-    }
-
-    .cards{
-      margin-top:16px;
+    .hero{
+      position:relative;
+      min-height:100svh;
       display:grid;
-      grid-template-columns:1fr 1fr;
+      place-items:center;
+      overflow:hidden;
+      padding:28px;
+      isolation:isolate;
+      background:#07111f;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(90deg, rgba(3,13,28,.92) 0%, rgba(4,16,34,.76) 34%, rgba(4,16,34,.25) 68%, rgba(4,16,34,.08) 100%),
+        url("assets/img/hero-robot-bim-ia.png") center/cover no-repeat;
+      transform:scale(1.01);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:22%;
+      z-index:-2;
+      background:linear-gradient(180deg, transparent, var(--bg));
+    }
+
+    .hero-top{
+      position:absolute;
+      inset:28px 30px auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap:18px;
     }
 
-    .appCard{
-      position:relative;
-      overflow:hidden;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:22px;
+    .brand{
       display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-height:190px;
-      cursor:pointer;
-      transform:translateY(0);
-      transition:
-        transform .14s ease,
-        background .14s ease,
-        border-color .14s ease,
-        box-shadow .14s ease,
-        filter .14s ease;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.75),
-        0 10px 24px rgba(0,80,180,.10);
-    }
-
-    .appCard::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius:18px;
-      background:
-        radial-gradient(600px circle at var(--mx,50%) var(--my,30%),
-          rgba(0,109,255,.20),
-          rgba(0,109,255,.08) 18%,
-          transparent 45%);
-      opacity:0;
-      transition:opacity .14s ease;
-      pointer-events:none;
-    }
-
-    .appCard:hover{
-      transform:translateY(-3px);
-      background:var(--cardHover);
-      border-color:rgba(0,109,255,.55);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.85),
-        0 20px 44px rgba(0,80,180,.18);
-      filter:brightness(1.02);
-    }
-
-    .appCard:hover::before{
-      opacity:1;
-    }
-
-    .cardLink{
-      position:absolute;
-      inset:0;
-      border-radius:18px;
-      z-index:1;
-      display:block;
-    }
-
-    .cardContent{
-      position:relative;
-      z-index:2;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      height:100%;
-    }
-
-    .appTitle{
-      font-size:30px;
-      font-weight:1000;
-      margin:0;
-      color:var(--deepBlue);
-    }
-
-    .appDesc{
-      margin:0;
-      color:var(--blueText);
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .btnRow{
-      margin-top:auto;
-      display:flex;
+      align-items:center;
       gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    a.btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:1000;
-      user-select:none;
-      cursor:pointer;
-      min-width:120px;
-      transition:
-        transform .10s ease,
-        filter .14s ease,
-        box-shadow .14s ease;
-      z-index:3;
-    }
-
-    a.btn:active{
-      transform:scale(.99);
-    }
-
-    .primary{
-      color:#ffffff;
-      background:linear-gradient(180deg, #0077ff, #004fc7);
-      box-shadow:
-        0 10px 20px rgba(0,109,255,.22),
-        inset 0 0 0 1px rgba(255,255,255,.18);
-    }
-
-    .primary:hover{
-      filter:brightness(1.10);
-      box-shadow:
-        0 16px 30px rgba(0,109,255,.30),
-        0 0 0 3px rgba(0,109,255,.16),
-        inset 0 0 0 1px rgba(255,255,255,.24);
-    }
-
-    a.btn:focus-visible{
-      outline:2px solid rgba(0,109,255,.85);
-      outline-offset:3px;
-    }
-
-    /* ===== ETIQUETA ESTRUCTURA ===== */
-    .updateTag{
-      width:max-content;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:center;
-      gap:4px;
-      padding:12px 20px;
-      border-radius:18px;
-      color:#ffffff;
-      background:linear-gradient(90deg, var(--new), var(--new2), var(--new), var(--new2));
-      background-size:250% 100%;
-      border:1px solid rgba(255,255,255,.75);
-      font-weight:1000;
-      letter-spacing:.9px;
-      box-shadow:
-        0 0 22px rgba(0,109,255,.35),
-        0 10px 22px rgba(0,80,180,.20);
-      animation:
-        updateMove 1.2s linear infinite,
-        blinkPulse 1s ease-in-out infinite;
-    }
-
-    .updateTop{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-size:16px;
-      line-height:1.1;
-      text-transform:uppercase;
-    }
-
-    .updateTop::before{
-      content:"✨";
-      font-size:18px;
-    }
-
-    .updateDate{
-      font-size:13px;
-      line-height:1;
-      font-weight:900;
-      opacity:.96;
-      background:rgba(255,255,255,.18);
-      border-radius:999px;
-      padding:4px 10px;
       color:white;
-    }
-
-    @keyframes updateMove{
-      0%{background-position:0% 50%}
-      100%{background-position:250% 50%}
-    }
-
-    @keyframes blinkPulse{
-      0%, 100%{
-        transform:scale(1);
-        filter:brightness(1);
-        box-shadow:
-          0 0 18px rgba(0,109,255,.28),
-          0 10px 22px rgba(0,80,180,.18);
-      }
-      50%{
-        transform:scale(1.05);
-        filter:brightness(1.28);
-        box-shadow:
-          0 0 32px rgba(0,109,255,.52),
-          0 10px 28px rgba(0,80,180,.25);
-      }
-    }
-
-    .estructuraCard{
-      border-color:rgba(0,109,255,.45);
-      background:
-        linear-gradient(135deg, rgba(0,109,255,.10), rgba(255,255,255,.90)),
-        var(--card);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.85),
-        0 0 30px rgba(0,109,255,.16);
-    }
-
-    .estructuraCard::after{
-      content:"";
-      position:absolute;
-      top:-70%;
-      left:-45%;
-      width:45%;
-      height:250%;
-      background:linear-gradient(90deg, transparent, rgba(0,109,255,.16), transparent);
-      transform:rotate(18deg);
-      animation:shineStructure 3s infinite;
-      pointer-events:none;
-    }
-
-    @keyframes shineStructure{
-      0%{transform:translateX(-140%) rotate(18deg)}
-      60%{transform:translateX(430%) rotate(18deg)}
-      100%{transform:translateX(430%) rotate(18deg)}
-    }
-
-    /* ===== AVISO ROJO ARQUITECTURA ===== */
-    .arquitecturaCard{
-      border-color:rgba(255,30,60,.60);
-      background:
-        linear-gradient(135deg, rgba(255,30,60,.10), rgba(255,255,255,.94)),
-        var(--card);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.85),
-        0 0 32px rgba(255,30,60,.18);
-    }
-
-    .arquitecturaCard::after{
-      content:"";
-      position:absolute;
-      top:-70%;
-      left:-45%;
-      width:45%;
-      height:250%;
-      background:linear-gradient(90deg, transparent, rgba(255,30,60,.18), transparent);
-      transform:rotate(18deg);
-      animation:shineArquitectura 3s infinite;
-      pointer-events:none;
-    }
-
-    @keyframes shineArquitectura{
-      0%{transform:translateX(-140%) rotate(18deg)}
-      60%{transform:translateX(430%) rotate(18deg)}
-      100%{transform:translateX(430%) rotate(18deg)}
-    }
-
-    .updateTagRed{
-      display:inline-flex;
-      flex-direction:column;
-      align-items:flex-start;
-      justify-content:center;
-      gap:4px;
-      width:max-content;
-      min-width:300px;
-      padding:14px 24px;
-      border-radius:20px;
-      color:#ffffff;
-      background:linear-gradient(90deg, #ff1744, #ff5a36, #ff1744, #ff7a18);
-      background-size:260% 100%;
-      border:1px solid rgba(255,255,255,.85);
-      font-weight:1000;
-      letter-spacing:.9px;
-      box-shadow:
-        0 0 26px rgba(255,30,60,.48),
-        0 12px 24px rgba(180,0,30,.24);
-      animation:
-        updateMoveRed 1.2s linear infinite,
-        blinkPulseRed 1s ease-in-out infinite;
-      margin-bottom:8px;
-    }
-
-    .updateTagRed .updateTop{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-size:16px;
-      line-height:1.1;
-      text-transform:uppercase;
-      color:#ffffff;
-      font-weight:1000;
-    }
-
-    .updateTagRed .updateTop::before{
-      content:"😄";
-      font-size:18px;
-    }
-
-    .updateTagRed .updateDate{
-      font-size:13px;
-      line-height:1;
-      font-weight:900;
-      opacity:.98;
-      background:rgba(255,255,255,.22);
-      border-radius:999px;
-      padding:5px 12px;
-      color:#ffffff;
-    }
-
-    @keyframes updateMoveRed{
-      0%{background-position:0% 50%}
-      100%{background-position:260% 50%}
-    }
-
-    @keyframes blinkPulseRed{
-      0%,100%{
-        transform:scale(1);
-        filter:brightness(1);
-        box-shadow:
-          0 0 20px rgba(255,30,60,.34),
-          0 10px 22px rgba(180,0,30,.18);
-      }
-      50%{
-        transform:scale(1.05);
-        filter:brightness(1.24);
-        box-shadow:
-          0 0 38px rgba(255,30,60,.65),
-          0 12px 30px rgba(180,0,30,.30);
-      }
-    }
-
-    /* ===== ZONA IA / PROXIMAMENTE ===== */
-    .ia-zone{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      margin-top:34px;
-      text-align:center;
-    }
-
-    .ia-banner{
-      position:relative;
-      overflow:hidden;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      min-width:420px;
-      min-height:86px;
-      padding:0 30px;
-      border-radius:24px;
       text-decoration:none;
       font-weight:1000;
-      font-size:1.16rem;
-      letter-spacing:.5px;
-      color:#ffffff;
-      background:linear-gradient(180deg, #0077ff, #004fc7);
-      border:1px solid rgba(0,109,255,.45);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.32) inset,
-        0 0 26px rgba(0,109,255,.24),
-        0 16px 34px rgba(0,80,180,.22);
-      transition:
-        transform .16s ease,
-        filter .16s ease,
-        border-color .16s ease,
-        box-shadow .16s ease;
     }
 
-    .ia-banner::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:-130%;
-      width:70%;
-      height:100%;
-      transform:skewX(-22deg);
-      background:linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,.05) 20%,
-        rgba(255,255,255,.48) 50%,
-        rgba(255,255,255,.08) 80%,
-        transparent 100%
-      );
-      animation:shine 3s ease-in-out infinite;
-      pointer-events:none;
+    .brand img{
+      width:62px;
+      height:62px;
+      object-fit:contain;
+      border-radius:16px;
+      background:rgba(255,255,255,.92);
+      box-shadow:0 10px 28px rgba(0,0,0,.22);
     }
 
-    .ia-banner::after{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      border-radius:24px;
-      background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.22), transparent 55%);
-      pointer-events:none;
+    .brand small{
+      display:block;
+      color:#a9d8ff;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
 
-    .ia-banner:hover{
-      transform:translateY(-3px) scale(1.02);
-      filter:brightness(1.08);
-      border-color:rgba(0,109,255,.75);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.45) inset,
-        0 0 30px rgba(0,109,255,.32),
-        0 18px 38px rgba(0,80,180,.24);
-    }
+    .top-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 
-    .ia-banner span{
-      position:relative;
-      z-index:2;
-      text-shadow:0 0 10px rgba(255,255,255,.18);
-    }
-
-    .brainIcon{
-      position:relative;
-      z-index:2;
-      width:44px;
-      height:44px;
-      border-radius:50%;
+    .top-links a{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.10));
-      border:1px solid rgba(255,255,255,.42);
-      box-shadow:
-        0 0 16px rgba(255,255,255,.18),
-        inset 0 0 0 1px rgba(255,255,255,.10);
-      font-size:24px;
+      min-height:42px;
+      padding:0 16px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:999px;
+      background:rgba(4,16,36,.62);
+      color:#e9f7ff;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:950;
+      backdrop-filter:blur(8px);
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
     }
 
-    .ia-card{
-      margin-top:22px;
-      max-width:860px;
-      width:100%;
-      padding:24px 28px;
-      border-radius:22px;
-      background:rgba(255,255,255,.95);
-      border:1px solid rgba(0,109,255,.22);
-      box-shadow:
-        0 16px 32px rgba(0,80,180,.12),
-        inset 0 0 0 1px rgba(255,255,255,.75);
+    .hero-inner{width:min(1180px,100%);margin:auto;padding-top:72px}
+    .hero-copy{width:min(650px,100%);text-align:left}
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      min-height:36px;
+      padding:0 14px;
+      border:1px solid rgba(85,230,255,.42);
+      border-radius:999px;
+      color:#c9f6ff;
+      background:rgba(0,109,255,.22);
+      font-size:12px;
+      font-weight:1000;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      box-shadow:0 0 28px rgba(0,183,255,.18);
+    }
+
+    h1{
+      margin:18px 0 10px;
+      font-size:clamp(64px,10vw,138px);
+      line-height:.86;
+      letter-spacing:0;
+      text-transform:uppercase;
+      text-shadow:0 14px 42px rgba(0,0,0,.38);
+    }
+
+    .hero-title-line{display:block;color:white}
+    .hero-title-accent{display:block;color:var(--cyan)}
+
+    .hero-subtitle{
+      margin:0;
+      max-width:620px;
+      color:#effaff;
+      font-size:clamp(25px,3.2vw,43px);
+      line-height:1.05;
+      font-weight:1000;
+      text-transform:uppercase;
+      text-shadow:0 9px 30px rgba(0,0,0,.38);
+    }
+
+    .hero-support{
+      margin:16px 0 0;
+      max-width:570px;
+      color:#bdeaff;
+      font-size:clamp(17px,2vw,22px);
+      line-height:1.38;
+      font-weight:850;
+    }
+
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border:0;
+      border-radius:14px;
+      color:white;
+      text-decoration:none;
+      font-weight:1000;
+      cursor:pointer;
+      transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+      box-shadow:0 16px 36px rgba(0,0,0,.24);
+    }
+
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+    .btn-primary{background:linear-gradient(135deg,#00a6ff,#0057ff 58%,#5137ff)}
+    .btn-light{color:#05306c;background:white}
+    .btn-whatsapp{background:linear-gradient(135deg,#11bf68,#058448)}
+
+    .counter{
+      position:absolute;
+      right:24px;
+      bottom:22px;
+      z-index:4;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 13px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      color:#d8f3ff;
+      background:rgba(5,18,39,.62);
+      font-size:12px;
+      font-weight:950;
+      backdrop-filter:blur(8px);
+      box-shadow:0 14px 30px rgba(0,0,0,.20);
+    }
+
+    .counter b{color:white;font-size:14px}
+
+    main{
+      background:
+        radial-gradient(circle at 82% 8%, rgba(0,109,255,.18), transparent 28%),
+        linear-gradient(180deg,#07111f,#0a1830 36%,#eef5ff 36%,#eef5ff 100%);
+    }
+
+    .section{width:min(1180px,calc(100% - 38px));margin:0 auto;padding:70px 0}
+
+    .download-zone{padding-top:86px;padding-bottom:36px}
+
+    .download-title{
+      margin:0 0 24px;
+      color:white;
+      text-align:center;
+      font-size:clamp(30px,4vw,48px);
+      font-weight:1000;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+
+    .download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+    .download-card{
       position:relative;
       overflow:hidden;
+      min-height:214px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      gap:13px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,.20);
+      border-radius:18px;
+      color:white;
+      text-decoration:none;
+      background:linear-gradient(145deg, rgba(0,109,255,.70), rgba(6,26,62,.60));
+      box-shadow:0 22px 52px rgba(0,0,0,.24), inset 0 0 0 1px rgba(255,255,255,.10);
+      backdrop-filter:blur(10px);
+      transition:transform .16s ease, border-color .16s ease, filter .16s ease;
     }
 
-    .ia-card::before{
+    .download-card::before{
       content:"";
       position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(0,140,255,.08), transparent 25%),
-        radial-gradient(circle at 85% 12%, rgba(90,0,255,.07), transparent 24%),
-        linear-gradient(135deg, rgba(0,109,255,.04), transparent 55%);
-      pointer-events:none;
-    }
-
-    .ia-head{
-      position:relative;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-
-    .brainBig{
-      width:72px;
-      height:72px;
+      inset:-80px -60px auto auto;
+      width:220px;
+      height:220px;
+      border:1px solid rgba(255,255,255,.24);
       border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:38px;
-      background:linear-gradient(180deg, #eef6ff, #dbe9ff);
-      border:2px solid rgba(0,109,255,.20);
-      box-shadow:
-        0 8px 18px rgba(0,109,255,.12),
-        inset 0 0 0 1px rgba(255,255,255,.75);
+      box-shadow:0 0 0 32px rgba(255,255,255,.045);
     }
 
-    .ia-title{
+    .download-card:hover{transform:translateY(-4px);border-color:rgba(85,230,255,.74);filter:brightness(1.06)}
+    .download-card.arch{background:linear-gradient(145deg, rgba(255,36,88,.76), rgba(5,18,39,.62))}
+    .download-card.est{background:linear-gradient(145deg, rgba(0,128,255,.78), rgba(6,26,62,.62))}
+
+    .download-card strong{
       position:relative;
       z-index:2;
-      margin:0;
-      font-size:2rem;
+      display:block;
+      font-size:clamp(26px,3vw,38px);
+      line-height:1.02;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+
+    .download-card span{position:relative;z-index:2;color:#dff7ff;font-weight:850;line-height:1.45}
+
+    .download-card em{
+      position:relative;
+      z-index:2;
+      width:max-content;
+      max-width:100%;
+      padding:10px 15px;
+      border-radius:12px;
+      color:#05306c;
+      background:white;
+      font-style:normal;
       font-weight:1000;
-      letter-spacing:.4px;
-      color:var(--deepBlue);
     }
 
-    .ia-subtitle{
-      position:relative;
-      z-index:2;
-      margin:10px 0 0;
-      font-size:1.08rem;
-      line-height:1.55;
-      color:var(--blueText);
-      font-weight:900;
-    }
+    .section-heading{margin:0 0 24px;color:white;text-align:center}
 
-    .ia-highlight{
-      position:relative;
-      z-index:2;
-      display:inline-block;
-      margin-top:18px;
-      padding:10px 20px;
+    .section-heading span{
+      display:inline-flex;
+      margin-bottom:12px;
+      padding:8px 13px;
+      border:1px solid rgba(85,230,255,.38);
       border-radius:999px;
-      background:linear-gradient(90deg, #0d71ff, #5b3dff);
-      color:#ffffff;
-      font-weight:1000;
-      letter-spacing:1.1px;
-      box-shadow:
-        0 8px 18px rgba(0,109,255,.20),
-        0 0 16px rgba(91,61,255,.18);
-    }
-
-    .ia-note{
-      position:relative;
-      z-index:2;
-      margin-top:18px;
-      padding-top:16px;
-      border-top:1px solid rgba(0,109,255,.14);
-      font-size:.95rem;
-      line-height:1.6;
-      color:var(--muted);
-      font-weight:800;
-    }
-
-    @keyframes shine{
-      0%{ left:-130%; }
-      100%{ left:160%; }
-    }
-
-    .foot{
-      margin-top:20px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:800;
-    }
-
-    .dot{
-      opacity:.6;
-    }
-
-    .vis b{
-      color:var(--deepBlue);
-      font-weight:1000;
-    }
-
-    .visitas-publicas{
-      flex-basis:100%;
-      text-align:right;
+      color:#bbf4ff;
+      background:rgba(0,109,255,.16);
       font-size:12px;
+      font-weight:1000;
+      letter-spacing:.11em;
+      text-transform:uppercase;
     }
+
+    .section-heading h2{
+      margin:0;
+      font-size:clamp(34px,5vw,62px);
+      line-height:.98;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+
+    .section-heading p{
+      width:min(760px,100%);
+      margin:14px auto 0;
+      color:#d5efff;
+      font-size:18px;
+      line-height:1.5;
+      font-weight:800;
+    }
+
+    .course-panel{
+      margin-top:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:28px;
+      background:rgba(255,255,255,.96);
+      color:var(--ink);
+      box-shadow:var(--shadow);
+    }
+
+    .course-hero{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+      padding:34px;
+      color:white;
+      background:linear-gradient(135deg, rgba(0,109,255,.96), rgba(21,63,202,.94) 58%, rgba(8,22,52,.96));
+    }
+
+    .course-hero h2{
+      margin:0;
+      font-size:clamp(36px,5vw,68px);
+      line-height:.98;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+
+    .course-hero p{margin:12px 0 0;max-width:760px;color:#e9f8ff;font-size:18px;line-height:1.5;font-weight:850}
+
+    .duration{min-width:170px;padding:18px;border:1px solid rgba(255,255,255,.30);border-radius:16px;text-align:center;background:rgba(3,15,38,.25)}
+    .duration b{display:block;font-size:42px;line-height:1}
+    .duration span{display:block;margin-top:6px;font-size:12px;font-weight:1000;letter-spacing:.13em;text-transform:uppercase}
+
+    .modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:26px}
+
+    .module{display:flex;flex-direction:column;min-height:430px;overflow:hidden;border:1px solid #cde0f8;border-radius:18px;background:white;box-shadow:0 15px 34px rgba(0,70,160,.10)}
+
+    .video-slot{
+      position:relative;
+      display:grid;
+      place-items:center;
+      min-height:205px;
+      color:white;
+      background:
+        linear-gradient(135deg, rgba(5,19,42,.34), rgba(0,109,255,.34)),
+        radial-gradient(circle at 80% 10%, rgba(85,230,255,.38), transparent 28%),
+        linear-gradient(145deg,#071a38,#005ee8 58%,#4d2cff);
+      cursor:pointer;
+    }
+
+    .video-slot::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(255,255,255,.34);border-radius:14px}
+
+    .play-mark{position:relative;z-index:2;display:grid;place-items:center;width:78px;height:78px;border-radius:50%;color:#06316d;background:white;font-size:30px;box-shadow:0 18px 36px rgba(0,0,0,.24)}
+
+    .video-note{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;text-align:center;color:#dff7ff;font-size:12px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+
+    .module-body{display:flex;flex:1;flex-direction:column;padding:19px}
+
+    .module h3{margin:0;color:#06316d;font-size:21px;line-height:1.15;letter-spacing:0;text-transform:uppercase}
+    .module ul{margin:15px 0 0;padding-left:20px;color:#57749a;font-size:14px;line-height:1.55;font-weight:720}
+    .module .youtube-link{margin-top:auto;padding-top:18px;color:#0b62c7;font-size:13px;font-weight:950}
+
+    .info-band{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:30px 34px;border-top:1px solid #d6e5f8;background:linear-gradient(135deg,#f5fbff,#ffffff)}
+    .info-band h2{margin:0;color:#06316d;font-size:clamp(26px,4vw,42px);letter-spacing:0;text-transform:uppercase}
+    .info-band p{margin:8px 0 0;color:#496d99;font-size:16px;line-height:1.55;font-weight:800}
+
+    .logos{display:flex;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}
+    .logos img{max-width:220px;max-height:86px;object-fit:contain}
+
+    .contact-card{min-width:320px;padding:20px;border:1px solid #cde0f8;border-radius:18px;background:white;box-shadow:0 14px 34px rgba(0,70,160,.10)}
+    .contact-card strong{display:block;color:#06316d;font-size:18px;line-height:1.25;text-transform:uppercase}
+    .contact-card span{display:block;margin-top:8px;color:#456993;font-weight:850;line-height:1.42}
+    .contact-card .btn{width:100%;margin-top:16px;box-shadow:0 12px 26px rgba(0,120,70,.18)}
+
+    footer{padding:28px 18px 38px;text-align:center;color:#5b779c;background:#eef5ff;font-size:12px;font-weight:800}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
     @media (max-width:900px){
-      h1{
-        font-size:38px;
-      }
-
-      .cards{
-        grid-template-columns:1fr;
-      }
+      .hero{align-items:end;padding:22px}
+      .hero::before{background:linear-gradient(180deg, rgba(3,13,28,.30) 0%, rgba(3,13,28,.76) 48%, rgba(3,13,28,.96) 100%),url("assets/img/hero-robot-bim-ia.png") 62% center/cover no-repeat}
+      .hero-top{inset:18px 18px auto}.brand img{width:52px;height:52px}.top-links{display:none}.hero-inner{padding-top:110px;padding-bottom:72px}
+      .download-grid,.modules,.course-hero,.info-band{grid-template-columns:1fr}.duration{width:100%}
     }
 
-    @media (max-width:640px){
-      .wrap{
-        padding:20px;
-      }
-
-      .ia-banner{
-        width:100%;
-        min-width:0;
-        padding:18px;
-      }
-
-      .ia-card{
-        padding:18px;
-      }
-
-      .ia-title{
-        font-size:1.55rem;
-      }
-
-      .updateTag,
-      .updateTagRed{
-        width:100%;
-        min-width:0;
-        align-items:center;
-      }
-
-      .updateTop,
-      .updateDate{
-        text-align:center;
-      }
+    @media (max-width:600px){
+      .hero{min-height:100svh;padding:18px}.actions .btn{width:100%}.counter{right:14px;bottom:14px}.section{width:min(100% - 24px,1180px);padding:52px 0}.download-zone{padding-top:64px}.course-hero,.modules,.info-band{padding:20px}.module{min-height:0}.contact-card{min-width:0}
     }
+
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="shell">
-      <span class="badge">Revit 2023/2024/2025/2026/2027 • Windows</span>
-      <h1>Conjunto</h1>
-      <p>Elige qué paquete quieres abrir. Dos puertas: una te da arquitectura… la otra también, pero con fierros 😄</p>
-
-      <div class="cards">
-        <!-- ARQUITECTURA -->
-        <div class="appCard arquitecturaCard" data-tilt>
-          <a class="cardLink" href="arquitectura.html" aria-label="Abrir Conjunto Arquitectura"></a>
-
-          <div class="cardContent">
-            <div class="updateTagRed">
-              <div class="updateTop">NUEVA ACTUALIZACIÓN</div>
-              <div class="updateDate">11/06/2026</div>
-            </div>
-
-            <div class="appTitle">1) Conjunto Arquitectura</div>
-            <p class="appDesc">Acabados, metrados, renombrados, exportación, encofrados, etc. Compatible con nueva versión 2027.</p>
-
-            <div class="btnRow">
-              <a class="btn primary" href="arquitectura.html">Abrir</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ESTRUCTURA -->
-        <div class="appCard estructuraCard" data-tilt>
-          <a class="cardLink" href="estructura.html" aria-label="Abrir Conjunto Estructura"></a>
-
-          <div class="cardContent">
-            <div class="updateTag">
-              <div class="updateTop">NUEVA ACTUALIZACIÓN</div>
-              <div class="updateDate">11/07/2026</div>
-            </div>
-
-            <div class="appTitle">2) Conjunto Estructura</div>
-            <p class="appDesc">Aceros, estribos, zapatas, vigas/columnas, y todo el arsenal estructural. Compatible con nueva versión 2027.</p>
-
-            <div class="btnRow">
-              <a class="btn primary" href="estructura.html">Abrir</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="foot">
-        <span>© <span id="y"></span> Conjunto</span>
-        <span class="dot">•</span>
-        <span class="vis">Si deseas la versión de prueba comparte la página web, comparte un video de TikTok a una de tus redes o amigos y me escribes solicitando tu versión de prueba de 30 días con evidencia.</span>
-        <span class="vis visitas-publicas">Visitas a esta portada: <b id="visitas">—</b></span>
-      </div>
-    </div>
-
-    <!-- ZONA IA / PROXIMAMENTE -->
-    <div class="ia-zone" id="ia-proximamente">
-      <a class="ia-banner" href="#ia-proximamente">
-        <span class="brainIcon">🧠</span>
-        <span>AUTOMATIZACIONES CON IA · PRÓXIMAMENTE</span>
+  <section class="hero" id="portada" aria-labelledby="hero-title">
+    <div class="hero-top">
+      <a class="brand" href="#portada" aria-label="Conjunto IA BIM">
+        <img src="assets/img/logo-ca.jpg" alt="Logo CA Conjunto IA BIM" />
+        <span>Conjunto IA BIM<small>Apps Revit + Academia</small></span>
       </a>
+      <nav class="top-links" aria-label="Navegacion principal">
+        <a href="#programa">BIM + IA</a>
+        <a href="#descargas">Aplicaciones Revit</a>
+        <a href="#informes">Informes</a>
+      </nav>
+    </div>
 
-      <div class="ia-card">
-        <div class="ia-head">
-          <div class="brainBig">🧠</div>
-          <h2 class="ia-title">AUTOMATIZACIONES CON IA</h2>
-        </div>
-
-        <p class="ia-subtitle">
-          Nuevo rumbo al trabajo colaborativo y gestión de datos.
-        </p>
-
-        <p class="ia-subtitle">
-          Estamos preparando nuevas herramientas enfocadas en automatización inteligente,
-          asistencia al modelado, organización de información y flujos más ágiles para BIM.
-        </p>
-
-        <div class="ia-highlight">PRÓXIMAMENTE...</div>
-
-        <div class="ia-note">
-          Muy pronto esta sección mostrará nuevas funciones orientadas a productividad,
-          coordinación y análisis con apoyo de IA.
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Programa en preparacion</span>
+        <h1 id="hero-title"><span class="hero-title-line">BIM</span><span class="hero-title-accent">+ IA</span></h1>
+        <p class="hero-subtitle">Asistentes virtuales y autonomos</p>
+        <p class="hero-support">Crea tus asistentes virtuales para automatizar procesos, organizar informacion BIM y mostrar tu trabajo al mundo.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#programa">Ver temario BIM + IA</a>
+          <a class="btn btn-light" href="#descargas">Descarga aplicaciones Revit</a>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="counter">Visitas a esta portada: <b id="visitas">-</b></div>
+  </section>
+
+  <main>
+    <section class="section download-zone reveal" id="descargas" aria-labelledby="downloads-title">
+      <h2 class="download-title" id="downloads-title">Descarga aplicaciones Revit</h2>
+      <div class="download-grid">
+        <a class="download-card arch" href="arquitectura.html" aria-label="Abrir Conjunto Arquitectura">
+          <strong>Conjunto Arquitectura</strong>
+          <span>Acabados, metrados, renombrados, exportacion, encofrados y herramientas para arquitectura.</span>
+          <em>Abrir Arquitectura</em>
+        </a>
+        <a class="download-card est" href="estructura.html" aria-label="Abrir Conjunto Estructura">
+          <strong>Conjunto Estructura</strong>
+          <span>Aceros, estribos, zapatas, vigas, columnas y herramientas estructurales para Revit.</span>
+          <em>Abrir Estructura</em>
+        </a>
+      </div>
+    </section>
+
+    <section class="section reveal" id="programa" aria-labelledby="program-title">
+      <div class="section-heading">
+        <span>Curso oficial</span>
+        <h2 id="program-title">Agentes IA con BIM</h2>
+        <p>Temario preliminar para aprender a construir asistentes virtuales que trabajen por ti con Revit, Speckle, Power BI, Codex, GitHub Pages y flujos de automatizacion.</p>
+      </div>
+
+      <div class="course-panel">
+        <div class="course-hero">
+          <div>
+            <h2>Temario</h2>
+            <p>Una ruta de aprendizaje practica, pensada para crear asistentes, conectar datos BIM y presentar resultados como producto profesional.</p>
+          </div>
+          <div class="duration"><b>3</b><span>meses de duracion</span></div>
+        </div>
+
+        <div class="modules">
+          <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 0 - Fundamentos</h3><ul><li>Que es un agente IA y como se diferencia de un chatbot.</li><li>Base de prompts, contexto, archivos y objetivos BIM.</li><li>Mapa del flujo: Revit, datos, documentacion y decisiones.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+          <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 1 - Automatizaciones IA</h3><ul><li>Automatizaciones para tareas repetitivas y revision tecnica.</li><li>Codex como asistente para preparar, revisar y mejorar flujos.</li><li>Asistentes virtuales que generan pasos, reportes y controles.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+          <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 2 - Datos en BIM + Speckle + Power BI</h3><ul><li>Preparacion de informacion BIM para lectura y analisis.</li><li>Interoperabilidad con Speckle y flujos colaborativos.</li><li>Indicadores y tableros con Power BI para tomar decisiones.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+          <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 3 - Presentaciones y datos en oficinas</h3><ul><li>Ordenar informacion tecnica para equipos, clientes y oficinas.</li><li>Presentaciones, reportes y respuestas asistidas por IA.</li><li>Gestion de conocimiento para procesos BIM repetibles.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+          <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 4 - Muestra tu agente al mundo y vende en las redes - Paginas web y anuncios gratuitos</h3><ul><li>Publicacion de paginas web con GitHub Pages y dominio propio.</li><li>Videos de presentacion, textos comerciales y enlaces a WhatsApp.</li><li>Como mostrar el agente, captar interesados y vender en redes.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+        </div>
+
+        <div class="info-band" id="informes">
+          <div>
+            <h2>Informes y consultas</h2>
+            <p>En coordinacion y representacion con el Colegio de Arquitectos. Atencion para interesados en el programa Agentes IA con BIM.</p>
+            <div class="logos"><img src="assets/img/logo-ca.jpg" alt="Logo CA Conjunto IA BIM" /><img src="assets/img/logo-colegio-arquitectos.png" alt="Logo Colegio de Arquitectos" /></div>
+          </div>
+          <div class="contact-card">
+            <strong>Consejo Regional Ayacucho</strong>
+            <span>Cel: 958050584</span>
+            <span>Jr. 28 de Julio No. 262 - Ofic. 09-13</span>
+            <a class="btn btn-whatsapp" href="https://wa.me/51958050584?text=Hola%2C%20deseo%20recibir%20informacion%20sobre%20Agentes%20IA%20con%20BIM." target="_blank" rel="noopener">Quiero informarme</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Conjunto IA BIM · Aplicaciones Revit y academia BIM + IA</footer>
 
   <script>
-    // Año
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Brillo que sigue al mouse
-    (function(){
-      var cards = document.querySelectorAll("[data-tilt]");
-      for (var i=0;i<cards.length;i++){
-        (function(card){
-          card.addEventListener("pointermove", function(e){
-            var r = card.getBoundingClientRect();
-            var x = ((e.clientX - r.left) / r.width) * 100;
-            var y = ((e.clientY - r.top) / r.height) * 100;
-            card.style.setProperty("--mx", x + "%");
-            card.style.setProperty("--my", y + "%");
-          });
-        })(cards[i]);
-      }
-    })();
+    const revealItems = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add("visible");}
+      });
+    }, {threshold:.16});
+    revealItems.forEach(function(item){revealObserver.observe(item);});
 
-    // Contador público: suma una visita por navegador cada día.
+    document.querySelectorAll(".video-slot").forEach(function(slot){
+      slot.addEventListener("click", function(){
+        const videoId = slot.dataset.youtube;
+        if(!videoId){
+          slot.querySelector(".video-note").textContent = "Aqui colocaremos el link de YouTube cuando este listo";
+          return;
+        }
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("title", "Video de presentacion del modulo");
+        iframe.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.style.position = "absolute";
+        iframe.style.inset = "0";
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "0";
+        iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=0&rel=0";
+        slot.innerHTML = "";
+        slot.appendChild(iframe);
+      });
+    });
+
     const COUNTER_ENDPOINT = "https://conjuntoiabim-contador.conjuntoarquitec.workers.dev/";
     const el = document.getElementById("visitas");
     const today = new Date().toISOString().slice(0,10);
-    const localFlag = `counted:conjuntoiabim:portada:${today}`;
+    const localFlag = "counted:conjuntoiabim:portada:" + today;
 
     async function updateCounter(){
       let countedToday = false;
+      try{countedToday = localStorage.getItem(localFlag) === "1";}catch(err){}
       try{
-        countedToday = localStorage.getItem(localFlag) === "1";
-      }catch(err){}
-
-      try{
-        const r = await fetch(COUNTER_ENDPOINT, {
-          method: countedToday ? "GET" : "POST",
-          cache: "no-store"
-        });
+        const r = await fetch(COUNTER_ENDPOINT, {method: countedToday ? "GET" : "POST", cache: "no-store"});
         if(!r.ok) throw new Error("HTTP " + r.status);
-
         const data = await r.json();
-        if(!data || typeof data.count !== "number"){
-          throw new Error("Respuesta inválida");
-        }
-
+        if(!data || typeof data.count !== "number") throw new Error("Respuesta invalida");
         el.textContent = new Intl.NumberFormat("es-PE").format(data.count);
-
-        if(!countedToday){
-          try{
-            localStorage.setItem(localFlag, "1");
-          }catch(err){}
-        }
+        if(!countedToday){try{localStorage.setItem(localFlag, "1");}catch(err){}}
       }catch(err){
-        el.textContent = "—";
+        el.textContent = "-";
         console.warn("Contador no disponible:", err);
       }
     }
-
     updateCounter();
   </script>
   <!-- Cloudflare Web Analytics -->
