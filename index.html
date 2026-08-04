@@ -390,6 +390,11 @@
     .play-mark{position:relative;z-index:2;display:grid;place-items:center;width:78px;height:78px;border-radius:50%;color:#06316d;background:white;font-size:30px;box-shadow:0 18px 36px rgba(0,0,0,.24)}
 
     .video-note{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;text-align:center;color:#dff7ff;font-size:12px;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+    .video-slot--ready{background-image:linear-gradient(180deg,rgba(3,12,31,.18),rgba(3,12,31,.68)),var(--video-thumbnail);background-position:center;background-size:cover}
+    .video-slot--ready::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,12,31,.24),transparent 54%)}
+    .video-slot--ready .play-mark{transform:scale(1.05);box-shadow:0 16px 38px rgba(0,0,0,.45)}
+    .video-slot--ready .video-note{left:14px;right:14px;bottom:14px;padding:9px 12px;border:1px solid rgba(255,255,255,.38);border-radius:7px;background:rgba(3,12,31,.66);text-shadow:0 1px 3px rgba(0,0,0,.8)}
+    .video-slot--ready:focus-visible{outline:3px solid #fff;outline-offset:-6px}
 
     .module-body{display:flex;flex:1;flex-direction:column;padding:19px}
 
@@ -504,7 +509,7 @@
 
         <div class="modules">
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 0 - Fundamentos</h3><ul><li>Que es un agente IA y como se diferencia de un chatbot.</li><li>Base de prompts, contexto, archivos y objetivos BIM.</li><li>Mapa del flujo: Revit, datos, documentacion y decisiones.</li><li>Python, Node.js y n8n para automatizar flujos y asistentes.</li><li>Skills y MCP para conectar herramientas, datos y procesos.</li><li>Formularios de Windows para control de software.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
-          <article class="module"><div class="video-slot" data-youtube="C3d1eFjEmBo"><div class="play-mark">▶</div><div class="video-note">Haz clic para reproducir el video del modulo 1</div></div><div class="module-body"><h3>Agentes IA - Modulo 1 - Automatizaciones IA</h3><ul><li>Automatizaciones para tareas repetitivas y revision tecnica.</li><li>Codex como asistente para preparar, revisar y mejorar flujos.</li><li>Asistentes virtuales que generan pasos, reportes y controles.</li></ul><div class="youtube-link">Video disponible: haz clic para reproducir</div></div></article>
+          <article class="module"><div class="video-slot video-slot--ready" data-youtube="C3d1eFjEmBo" style="--video-thumbnail:url('https://i.ytimg.com/vi/C3d1eFjEmBo/maxresdefault.jpg'),url('https://i.ytimg.com/vi/C3d1eFjEmBo/hqdefault.jpg');" role="button" tabindex="0" aria-label="Reproducir video del modulo 1"><div class="play-mark">▶</div><div class="video-note">Haz clic para reproducir el video del modulo 1</div></div><div class="module-body"><h3>Agentes IA - Modulo 1 - Automatizaciones IA</h3><ul><li>Automatizaciones para tareas repetitivas y revision tecnica.</li><li>Codex como asistente para preparar, revisar y mejorar flujos.</li><li>Asistentes virtuales que generan pasos, reportes y controles.</li><li>Metrados autom&aacute;ticos con IA.</li><li>Especificaciones t&eacute;cnicas autom&aacute;ticas con IA.</li><li>Informes de evaluaci&oacute;n I y dominio de Excel con macros e IA.</li><li>Planificaci&oacute;n del agente IA: crea tu automatizaci&oacute;n para la tarea m&aacute;s repetitiva.</li></ul><div class="youtube-link">Video disponible: haz clic para reproducir</div></div></article>
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 2 - Datos en BIM + Speckle + Power BI</h3><ul><li>Preparacion de informacion BIM para lectura y analisis.</li><li>Interoperabilidad con Speckle y flujos colaborativos.</li><li>Indicadores y tableros con Power BI para tomar decisiones.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 3 - Presentaciones y datos en oficinas</h3><ul><li><strong>Para evaluadores:</strong> automatizar informes, datos y gesti&oacute;n de informaci&oacute;n.</li><li>Obtenci&oacute;n de datos para todo tipo de profesi&oacute;n y dominio de Excel automatizado con IA.</li><li>Aplicaciones para restauradores y m&aacute;s especialidades.</li><li>Ordenar informacion tecnica para equipos, clientes y oficinas.</li><li>Presentaciones, reportes y respuestas asistidas por IA.</li><li>Gestion de conocimiento para procesos BIM repetibles.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 4 - Muestra tu agente al mundo y vende en las redes - Paginas web y anuncios gratuitos</h3><ul><li><strong>Tema final:</strong> habr&aacute; una exposici&oacute;n para sustentar tu proyecto y presentarlo al mundo, mostrando tus ideas con IA.</li><li>Publicacion de paginas web con GitHub Pages y dominio propio.</li><li>Videos de presentacion, textos comerciales y enlaces a WhatsApp.</li><li>Como mostrar el agente, captar interesados y vender en redes.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
@@ -585,14 +590,22 @@
       if(event.key === "Escape"){closeVideoModal();}
     });
 
+    function activateVideoSlot(slot){
+      const videoId = slot.dataset.youtube;
+      if(!videoId){
+        slot.querySelector(".video-note").textContent = "Aqui colocaremos el link de YouTube cuando este listo";
+        return;
+      }
+      openVideoModal(videoId, slot);
+    }
+
     document.querySelectorAll(".video-slot").forEach(function(slot){
-      slot.addEventListener("click", function(){
-        const videoId = slot.dataset.youtube;
-        if(!videoId){
-          slot.querySelector(".video-note").textContent = "Aqui colocaremos el link de YouTube cuando este listo";
-          return;
+      slot.addEventListener("click", function(){activateVideoSlot(slot);});
+      slot.addEventListener("keydown", function(event){
+        if(event.key === "Enter" || event.key === " " || event.key === "Spacebar"){
+          event.preventDefault();
+          activateVideoSlot(slot);
         }
-        openVideoModal(videoId, slot);
       });
     });
     const COUNTER_ENDPOINT = "https://conjuntoiabim-contador.conjuntoarquitec.workers.dev/";
