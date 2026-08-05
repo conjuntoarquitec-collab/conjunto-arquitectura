@@ -395,7 +395,7 @@
     .video-slot--ready .play-mark{transform:scale(1.05);box-shadow:0 16px 38px rgba(0,0,0,.45)}
     .video-slot--ready .video-note{left:14px;right:14px;bottom:14px;padding:9px 12px;border:1px solid rgba(255,255,255,.38);border-radius:7px;background:rgba(3,12,31,.66);text-shadow:0 1px 3px rgba(0,0,0,.8)}
     .video-slot--ready:focus-visible{outline:3px solid #fff;outline-offset:-6px}
-    .youtube-external-link{position:absolute;top:14px;right:14px;z-index:4;display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid rgba(255,255,255,.68);border-radius:7px;color:#fff;background:rgba(3,12,31,.82);font-size:12px;font-weight:950;line-height:1;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+    .youtube-external-link{position:absolute;top:12px;right:12px;z-index:4;display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid rgba(255,255,255,.78);border-radius:8px;color:#fff;background:rgba(3,12,31,.88);font-size:14px;font-weight:950;line-height:1;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.34)}
     .youtube-external-link:hover,.youtube-external-link:focus-visible{background:#d91f26;color:#fff;outline:2px solid #fff;outline-offset:2px}
 
 
@@ -421,6 +421,15 @@
 
     .logos{display:flex;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}
     .logos img{max-width:220px;max-height:86px;object-fit:contain}
+    .logos .logo-regional{width:128px;height:128px;max-width:128px;max-height:128px;border-radius:10px;background:#fff;box-shadow:0 8px 18px rgba(0,70,160,.12)}
+
+    .inquiry-cta{display:flex;min-height:430px;flex-direction:column;align-items:flex-start;justify-content:center;padding:34px;border:1px solid #0b62c7;border-radius:18px;color:#fff;background:#06316d;box-shadow:0 15px 34px rgba(0,70,160,.16);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+    .inquiry-cta:hover,.inquiry-cta:focus-visible{transform:translateY(-3px);box-shadow:0 20px 42px rgba(0,70,160,.26);outline:3px solid #55e6ff;outline-offset:3px}
+    .inquiry-cta__eyebrow{margin:0 0 14px;color:#83e9ff;font-size:13px;font-weight:950;text-transform:uppercase}
+    .inquiry-cta strong{display:block;font-size:40px;line-height:1.05;text-transform:uppercase}
+    .inquiry-cta p{max-width:430px;margin:18px 0 0;color:#d9ecff;font-size:17px;line-height:1.5;font-weight:760}
+    .inquiry-cta__action{display:inline-flex;margin-top:28px;padding:11px 14px;border:1px solid rgba(255,255,255,.72);border-radius:7px;color:#fff;font-size:14px;font-weight:950}
+
 
     .contact-card{min-width:320px;padding:20px;border:1px solid #cde0f8;border-radius:18px;background:white;box-shadow:0 14px 34px rgba(0,70,160,.10)}
     .contact-card strong{display:block;color:#06316d;font-size:18px;line-height:1.25;text-transform:uppercase}
@@ -516,13 +525,19 @@
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 2 - Datos en BIM + Speckle + Power BI</h3><ul><li>Preparacion de informacion BIM para lectura y analisis.</li><li>Interoperabilidad con Speckle y flujos colaborativos.</li><li>Indicadores y tableros con Power BI para tomar decisiones.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 3 - Presentaciones y datos en oficinas</h3><ul><li><strong>Para evaluadores:</strong> automatizar informes, datos y gesti&oacute;n de informaci&oacute;n.</li><li>Obtenci&oacute;n de datos para todo tipo de profesi&oacute;n y dominio de Excel automatizado con IA.</li><li>Aplicaciones para restauradores y m&aacute;s especialidades.</li><li>Ordenar informacion tecnica para equipos, clientes y oficinas.</li><li>Presentaciones, reportes y respuestas asistidas por IA.</li><li>Gestion de conocimiento para procesos BIM repetibles.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
           <article class="module"><div class="video-slot" data-youtube=""><div class="play-mark">▶</div><div class="video-note">Espacio para video YouTube del modulo</div></div><div class="module-body"><h3>Agentes IA - Modulo 4 - Muestra tu agente al mundo y vende en las redes - Paginas web y anuncios gratuitos</h3><ul><li><strong>Tema final:</strong> habr&aacute; una exposici&oacute;n para sustentar tu proyecto y presentarlo al mundo, mostrando tus ideas con IA.</li><li>Publicacion de paginas web con GitHub Pages y dominio propio.</li><li>Videos de presentacion, textos comerciales y enlaces a WhatsApp.</li><li>Como mostrar el agente, captar interesados y vender en redes.</li></ul><div class="youtube-link">Link YouTube pendiente</div></div></article>
+          <a class="inquiry-cta" href="#informes" aria-label="Solicita informacion: ir a Informes y consultas">
+            <span class="inquiry-cta__eyebrow">Consejo Regional Ayacucho</span>
+            <strong>Solicita informacion</strong>
+            <p>Recibe orientacion sobre el programa Agentes IA con BIM y coordina tus consultas.</p>
+            <span class="inquiry-cta__action">Ir a informes y consultas &#8595;</span>
+          </a>
         </div>
 
         <div class="info-band" id="informes">
           <div>
             <h2>Informes y consultas</h2>
             <p>En coordinacion y representacion con el Colegio de Arquitectos. Atencion para interesados en el programa Agentes IA con BIM.</p>
-            <div class="logos"><img src="assets/img/logo-ca.jpg" alt="Logo CA Conjunto IA BIM" /><img src="assets/img/logo-colegio-arquitectos.png" alt="Logo Colegio de Arquitectos" /></div>
+            <div class="logos"><img src="assets/img/logo-ca.jpg" alt="Logo CA Conjunto IA BIM" /><img class="logo-regional" src="assets/img/logo-colegio-regional-ayacucho.jpg" alt="Logo Colegio de Arquitectos Regional Ayacucho" /></div>
           </div>
           <div class="contact-card">
             <strong>Consejo Regional Ayacucho</strong>
