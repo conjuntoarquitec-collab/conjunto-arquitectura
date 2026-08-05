@@ -288,18 +288,25 @@
 
     .download-card span{position:relative;z-index:2;color:#dff7ff;font-weight:850;line-height:1.45}
 
-    .download-card em{
-      position:relative;
-      z-index:2;
-      width:max-content;
-      max-width:100%;
+    .download-actions{position:relative;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+    .download-open,
+    .download-whatsapp{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
       padding:10px 15px;
       border-radius:12px;
-      color:#05306c;
-      background:white;
-      font-style:normal;
       font-weight:1000;
+      text-decoration:none;
+      line-height:1.1;
     }
+
+    .download-open{color:#05306c;background:white}
+    .download-whatsapp{gap:8px;border:1px solid rgba(255,255,255,.72);color:#fff;background:rgba(255,255,255,.08);text-shadow:0 2px 8px rgba(0,0,0,.38);box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)}
+    .download-whatsapp:hover,.download-whatsapp:focus-visible{border-color:#46ef8d;background:rgba(20,194,102,.16);outline:2px solid rgba(70,239,141,.9);outline-offset:2px}
+    .download-whatsapp::before{content:"";width:19px;height:19px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#39e36c 0 58%,transparent 59%);box-shadow:0 0 0 2px rgba(255,255,255,.88)}
 
     .section-heading{margin:0 0 24px;color:white;text-align:center}
 
@@ -509,16 +516,16 @@
     <section class="section download-zone reveal" id="descargas" aria-labelledby="downloads-title">
       <h2 class="download-title" id="downloads-title">Descarga aplicaciones Revit</h2>
       <div class="download-grid">
-        <a class="download-card arch" href="arquitectura.html" aria-label="Abrir Conjunto Arquitectura">
+        <article class="download-card arch" aria-label="Conjunto Arquitectura">
           <strong>Conjunto Arquitectura</strong>
           <span>Acabados, metrados, renombrados, exportacion, encofrados y herramientas para arquitectura.</span>
-          <em>Abrir Arquitectura</em>
-        </a>
-        <a class="download-card est" href="estructura.html" aria-label="Abrir Conjunto Estructura">
+          <div class="download-actions"><a class="download-open" href="arquitectura.html">Abrir Arquitectura</a><a class="download-whatsapp" href="https://wa.me/51958050584?text=Hola%2C%20deseo%20conocer%20la%20fecha%20de%20inicio%20del%20curso%20Agentes%20IA%20con%20BIM%20e%20inteligencia%20artificial.%20Vengo%20por%20recomendaci%C3%B3n%20del%20Arq.%20Dary%20Rodr%C3%ADguez%20y%20deseo%20registrar%20mi%20inter%C3%A9s%20ante%20el%20Colegio%20de%20Arquitectos." target="_blank" rel="noopener" aria-label="CLIP WhatsApp para Conjunto Arquitectura">CLIP WhatsApp</a></div>
+        </article>
+        <article class="download-card est" aria-label="Conjunto Estructura">
           <strong>Conjunto Estructura</strong>
           <span>Aceros, estribos, zapatas, vigas, columnas y herramientas estructurales para Revit.</span>
-          <em>Abrir Estructura</em>
-        </a>
+          <div class="download-actions"><a class="download-open" href="estructura.html">Abrir Estructura</a><a class="download-whatsapp" href="https://wa.me/51958050584?text=Hola%2C%20deseo%20conocer%20la%20fecha%20de%20inicio%20del%20curso%20Agentes%20IA%20con%20BIM%20e%20inteligencia%20artificial.%20Vengo%20por%20recomendaci%C3%B3n%20del%20Arq.%20Dary%20Rodr%C3%ADguez%20y%20deseo%20registrar%20mi%20inter%C3%A9s%20ante%20el%20Colegio%20de%20Arquitectos." target="_blank" rel="noopener" aria-label="CLIP WhatsApp para Conjunto Estructura">CLIP WhatsApp</a></div>
+        </article>
       </div>
     </section>
 
